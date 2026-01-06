@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+    
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.loginFormSection{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+}
+.formHeading{
+    color: #0B0729;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; 
+    background-color: #F7F7F7;
+    color: #0B0729;; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 375px;
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.formInputs{
+    width: 275px;
+    outline: none;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    padding: 9px;
+    color: #0B0729;;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+.formInputs input{
+    border: none;
+    outline: none;
+    width: 270px;
+}
+.formInputs input::placeholder{
+    color: #0B0729;;
+}
+.formButtons{
+    width: 75px;
+    border: none;
+    outline: none;
+    height: 30px;
+    background-color: #0B0729;;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px 0px 0px 0px;
+    transition: all 0.3s ease-in-out;
+}
+.formButtons:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.formInputsnotDone{
+    color: red;
+    height: 20px;
+}
+</style>
+
+<body>
+    <section class="loginFormSection">
+        <h3 class="formHeading">Signup</h3>
+        <form class="loginForm">
+            <div class="inputBox">
+                <label for="signup-username">Username:</label>
+                <div class="formInputs">
+                     <input type="text" placeholder="enter username" id="signup-username">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+               
+                <p class="formInputsnotDone" id="usernameError"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="signup-email">Email:</label>
+                <div class="formInputs">
+                    <input type="email" placeholder="enter email" id="signup-email">
+                    <i class="fa-solid fa-at"></i>   
+                </div>
+                
+                <p class="formInputsnotDone" id="emailError"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="signup-password">Password:</label>
+                <div class="formInputs">
+                    <input type="password" placeholder="enter password" id="signup-password">
+                    <i class="fa-solid fa-eye show-paswd"></i>
+                </div>
+                
+                <p class="formInputsnotDone" id="passwordError"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="signup-confirm">Confirm Password:</label>
+                <div class="formInputs">
+                    <input type="password" placeholder="confirm password" id="signup-confirm">
+                    <i class="fa-solid fa-eye" id="confirm-icon"></i>
+                </div>
+                
+                <p class="formInputsnotDone" id="confirm-error"></p>
+            </div>
+
+            <div>
+                <button type="submit" id="signup-submit" onclick="signupValidation(event)" class="formButtons">Signup</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+<script>
+    const signupUsername=document.getElementById('signup-username');
+    const signupEmail=document.getElementById('signup-email');
+    const signupPassword=document.getElementById('signup-password');
+    const signupConfirm=document.getElementById('signup-confirm');
+    const submitButton=document.getElementById('signup-submit');
+    const usernameMessage=document.getElementById('usernameError');
+    const emailMessage=document.getElementById('emailError');
+    const passwordMessage=document.getElementById('passwordError');
+    const confirmMessage=document.getElementById('confirm-error');
+    const usernamePattern=/^[a-zA-Z0-9](?:[a-zA-Z0-9._-]{1,18}[a-zA-Z0-9])$/;
+    const signupEmailPattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const confirmShow=document.getElementById('confirm-icon');
+    const showPassword=document.querySelector('.show-paswd');
+
+    function usernameValidate(){
+        if(signupUsername.value===""){
+            usernameMessage.textContent='please enter username';
+        }
+        else if(!usernamePattern.test(signupUsername.value)){
+            usernameMessage.textContent='alps,nums,-_ only allowed';
+        }
+        else{
+            usernameMessage.textContent='';
+        }
+    }
+     function emailValidate(){
+        if(signupEmail.value===""){
+            emailMessage.textContent='please enter email';
+        }
+        else if(!signupEmailPattern.test(signupEmail.value)){
+            emailMessage.textContent='enter valid email';
+        }
+        else{
+            emailMessage.textContent='';
+        }
+    }
+     function passwordValidate(){
+        if(signupPassword.value===""){
+            passwordMessage.textContent='please enter password';
+        }
+        else if(signupPassword.value.length<8){
+            passwordMessage.textContent='your password is weak';
+        }
+        else{
+            passwordMessage.textContent='';
+        }
+    }
+     function confirmValidate(){
+        if(signupConfirm.value===""){
+            confirmMessage.textContent='please re-enter password';
+        }
+        else if(signupPassword.value != signupConfirm.value){
+            confirmMessage.textContent=`possword didn't match`;
+        }
+        else{
+            confirmMessage.textContent='';
+        }
+    }
+    showPassword.addEventListener('click',()=>{
+        if (signupPassword.type==='password') {
+            signupPassword.type='text';
+        } else {
+            signupPassword.type='password';
+        }
+    })
+    confirmShow.addEventListener('click',()=>{
+        if (signupConfirm.type==='password') {
+            signupConfirm.type='text';
+        } else {
+            signupConfirm.type='password';
+        }
+    })
+    function signupValidation(event) {
+        event.preventDefault();
+        usernameValidate();
+        emailValidate();
+        passwordValidate();
+        confirmValidate();
+    }
+
+</script>
+</html>

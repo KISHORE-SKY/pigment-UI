@@ -2,6 +2,9 @@ import "./forms.css"
 import SideBar from ".././navbar/sidebar"
 import { useState } from "react";
 import { LuCopy } from "react-icons/lu";
+import { IoEyeSharp } from "react-icons/io5";
+import { RiUserFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
 
 function FormComponents() {
 
@@ -9,7 +12,17 @@ function FormComponents() {
     const [loginPassword,setLoginPassword]=useState('');
     const [loginErrorUser,setLoginErrorUser]=useState('');
     const [loginErrorPassword,setLoginErrorPassword]=useState('');
+    const [typeInput,setType]=useState('password');
     const loginnamePattern=/^[a-zA-Z0-9](?:[a-zA-Z0-9._-]{1,18}[a-zA-Z0-9])$/;
+
+    function loginShowPassword(){
+        if(typeInput==="password"){
+           setType('text')
+        }
+        else{
+          setType('password')
+        }
+    }
 
     function loginUsernameHandler(event){
         setLoginUsername(event.target.value);
@@ -53,6 +66,7 @@ function FormComponents() {
 
     function vennilaJsCodesHadler() {
         setLoginDivision({vennila:true});
+        
     }
     function reactLogincodeHandler() {
         setLoginDivision({reactLogin:true});
@@ -95,6 +109,7 @@ const loginPreCodesReact=`
     const [loginErrorUser,setLoginErrorUser]=useState('');
     const [loginErrorPassword,setLoginErrorPassword]=useState('');
     const loginnamePattern=/^[a-zA-Z0-9](?:[a-zA-Z0-9._-]{1,18}[a-zA-Z0-9])$/;
+    const [typeInput,setType]=useState('password');
 
     function loginUsernameHandler(event){
         setLoginUsername(event.target.value);
@@ -122,6 +137,14 @@ const loginPreCodesReact=`
             setLoginErrorPassword(' ');
         }
     }
+     function loginShowPassword(){
+        if(typeInput==="password"){
+           setType('text')
+        }
+        else{
+          setType('password')
+        }
+    }
     function LoginHandler(event){
         event.preventDefault();
         loginUserNameCheck();
@@ -129,24 +152,31 @@ const loginPreCodesReact=`
     }
 
     <form className="loginForm">
-
         <div className="inputBox">
-            <label for="logusername">Username:</label>
-            <input type="text" placeholder="username"
-            className="formInputs" value={loginUsername}
-            onChange={loginUsernameHandler} id="logusername"/>
-            <p className="formInputsnotDone"
-            >{loginErrorUser}</p>
+            <label htmlFor="logusername">Username:</label>
+            <div className="formInputs">
+                <input type="text" placeholder="username"
+                value={loginUsername}
+                onChange={loginUsernameHandler} id="logusername"/>
+                <RiUserFill />
+            </div>
+
+            <p className="formInputsnotDone">{loginErrorUser}</p>
         </div>
 
         <div className="inputBox">
-            <label for="logPassword">Password:</label>
-            <input type="password" placeholder="password"
-            className="formInputs" value={loginPassword}
-            onChange={loginPasswordHandler} id="logPassword"/>
-            <p className="formInputsnotDone">{loginErrorPassword}</p>
-        </div>     
+            <label htmlFor="logPassword">Password:</label>
+            <div className="formInputs">
+                <input type={typeInput} placeholder="password"
+                value={loginPassword}
+                onChange={loginPasswordHandler} id="logPassword"/>
+                <IoEyeSharp onClick={loginShowPassword}/>
+            </div>
+                                
 
+            <p className="formInputsnotDone">{loginErrorPassword}</p>                    
+        </div>
+                            
         <div>
             <button className="formButtons" onClick={LoginHandler}>Login</button>
         </div>
@@ -205,7 +235,174 @@ const loginPreCodesReact=`
 `;
 
 
-    const vennilaLoginCode=`vennila js codes are comming soon....`;
+    const vennilaLoginCode=`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.loginFormSection{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+}
+.formHeading{
+    color: #0B0729;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; 
+    background-color: #F7F7F7;
+    color: #0B0729; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 375px;
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.formInputs{
+    width: 275px;
+    outline: none;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    padding: 9px;
+    color: #0B0729;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+.formInputs input{
+    border: none;
+    outline: none;
+    width: 270px;
+}
+.formInputs.input::placeholder{
+    color: #0B0729;
+}
+.formButtons{
+    width: 75px;
+    border: none;
+    outline: none;
+    height: 30px;
+    background-color: #0B0729;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px 0px 0px 0px;
+    transition: all 0.3s ease-in-out;
+}
+.formButtons:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.formInputsnotDone{
+    color: red;
+    height: 20px;
+}
+</style>
+<body>
+    <section class="loginFormSection">
+        <h3 class="formHeading">Login</h3>
+        <form class="loginForm">
+            <div class="inputBox">
+                <label for="loginusername">Username:</label>
+                <div class="formInputs">
+                    <input type="text" placeholder="enter username" 
+                    id="loginusername">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                
+                <p class="formInputsnotDone" id="username-message"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="loginPassword">Password:</label>
+                <div  class="formInputs">
+                    <input type="password" placeholder="enter password" 
+                    id="loginPassword">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+               
+                <p class="formInputsnotDone" id="password-message"></p>
+            </div>
+
+            <div>
+                <button class="formButtons" id="login-button" 
+                onclick="loginValidation(event)">Login</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+<script>
+const usernameInput=document.getElementById('loginusername');
+const passwordInput=document.getElementById('loginPassword');
+const errorMessageUsername=document.getElementById('username-message');
+const errorMessagePassword=document.getElementById('password-message');
+const submitButton=document.getElementById('login-button');
+const usernamePattern=/^[a-zA-Z0-9](?:[a-zA-Z0-9._-]{1,18}[a-zA-Z0-9])$/;
+const showPassword=document.querySelector('.fa-eye');
+
+function usernameValidation(){
+    if(usernameInput.value===""){
+        errorMessageUsername.textContent='please enter username';
+    }
+    else if(!usernamePattern.test(usernameInput.value)){
+        errorMessageUsername.textContent='enter valid username';
+    }
+    else{
+        errorMessageUsername.textContent='';
+    }
+}
+function passwordValidation() {
+    if(passwordInput.value===""){
+        errorMessagePassword.textContent='please enter Password';
+    }
+    else{
+        errorMessagePassword.textContent='';
+    }
+}
+showPassword.addEventListener('click',()=>{
+    if(passwordInput.type==='password'){
+        passwordInput.type='text'
+    }
+    else{
+        passwordInput.type='password'
+    }
+})
+function loginValidation(event){
+    event.preventDefault();
+    usernameValidation();
+    passwordValidation();
+}
+
+</script>
+</html>
+
+    `;
 
 
 
@@ -234,21 +431,15 @@ const loginPreCodesReact=`
     function signupusernameCheck() {
         if(signUpusername===""){
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {username:'please Enter username'});
+                ...prev,username:'please Enter username'}));
         }
         else if(!signupusernamePattern.test(signUpusername)){
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {username:'Caps,nums,sml,_,-  only allowed'});
+                ...prev,username:'Caps,nums,sml,_,-  only allowed'}));
         }
         else{
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {username:''});
+                ...prev,username:''}));
         }
     }
 
@@ -258,19 +449,15 @@ const loginPreCodesReact=`
     function signUpemailCheck(){
         if(signupEmail===""){
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),{email:'please enter email'});
+                ...prev,email:'please enter email'}));
         }
         else if(!signupEmailPattern.test(signupEmail)){
             setSignupErrorMessage(prev=>({
-                ...prev}),
-            {email:'enter valid email'});
+                ...prev,email:'enter valid email'}));
         }
         else{
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {email:''});
+                ...prev,email:''}));
         }
     }
 
@@ -280,21 +467,15 @@ const loginPreCodesReact=`
     function signupPasswordValid(){
         if(signupPassword===""){
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {password:'please enter password'});
+                ...prev,password:'please enter password'}));
         }
         else if(signupPassword.length<8){
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {password:'your password is weak'});
+                ...prev,password:'your password is weak'}));
         }
         else{
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {password:''});
+                ...prev,password:''}));
         }
     }
 
@@ -304,21 +485,15 @@ const loginPreCodesReact=`
     function confirmPasswordValid() {
         if(confirmSignup===""){
             setSignupErrorMessage(prev=>({
-                ...prev
-            }),
-            {confirmPassword:'please render to confirm password'});
+                ...prev,confirmPassword:'please render to confirm password'}));
         }
         else if(confirmSignup !== signupPassword){
              setSignupErrorMessage(prev=>({
-                ...prev
-             }),
-             {confirmPassword:`password is didn't match`});
+                ...prev,confirmPassword:`password is didn't match`}));
         }
         else{
              setSignupErrorMessage(prev=>({
-                ...prev
-             }),
-             {confirmPassword:''});
+                ...prev,confirmPassword:''}));
         }
     }
 
@@ -376,7 +551,8 @@ const loginPreCodesReact=`
     </div>
 
     <div>
-        <button className="formButtons" onClick={SignUpValidation}>Sign Up</button>
+        <button className="formButtons"
+         onClick={SignUpValidation}>Sign Up</button>
     </div>
                             
 </form>
@@ -430,6 +606,236 @@ const loginPreCodesReact=`
 }
 `;
 
+const signupjscode=`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+    
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.loginFormSection{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+}
+.formHeading{
+    color: #0B0729;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; 
+    background-color: #F7F7F7;
+    color: #0B0729;; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 375px;
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.formInputs{
+    width: 275px;
+    outline: none;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    padding: 9px;
+    color: #0B0729;;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+.formInputs input{
+    border: none;
+    outline: none;
+    width: 270px;
+}
+.formInputs input::placeholder{
+    color: #0B0729;;
+}
+.formButtons{
+    width: 75px;
+    border: none;
+    outline: none;
+    height: 30px;
+    background-color: #0B0729;;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px 0px 0px 0px;
+    transition: all 0.3s ease-in-out;
+}
+.formButtons:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.formInputsnotDone{
+    color: red;
+    height: 20px;
+}
+</style>
+
+<body>
+    <section class="loginFormSection">
+        <h3 class="formHeading">Signup</h3>
+        <form class="loginForm">
+            <div class="inputBox">
+                <label for="signup-username">Username:</label>
+                <div class="formInputs">
+                     <input type="text" placeholder="enter 
+                     username" id="signup-username">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+               
+                <p class="formInputsnotDone" id="usernameError"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="signup-email">Email:</label>
+                <div class="formInputs">
+                    <input type="email" placeholder="enter email"
+                     id="signup-email">
+                    <i class="fa-solid fa-at"></i>   
+                </div>
+                
+                <p class="formInputsnotDone" id="emailError"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="signup-password">Password:</label>
+                <div class="formInputs">
+                    <input type="password" placeholder="enter 
+                    password" id="signup-password">
+                    <i class="fa-solid fa-eye show-paswd"></i>
+                </div>
+                
+                <p class="formInputsnotDone" id="passwordError"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="signup-confirm">Confirm Password:</label>
+                <div class="formInputs">
+                    <input type="password" placeholder="confirm password" 
+                    id="signup-confirm">
+                    <i class="fa-solid fa-eye" id="confirm-icon"></i>
+                </div>
+                
+                <p class="formInputsnotDone" id="confirm-error"></p>
+            </div>
+
+            <div>
+                <button type="submit" id="signup-submit" 
+                onclick="signupValidation(event)" 
+                class="formButtons">Signup</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+<script>
+    const signupUsername=document.getElementById('signup-username');
+    const signupEmail=document.getElementById('signup-email');
+    const signupPassword=document.getElementById('signup-password');
+    const signupConfirm=document.getElementById('signup-confirm');
+    const submitButton=document.getElementById('signup-submit');
+    const usernameMessage=document.getElementById('usernameError');
+    const emailMessage=document.getElementById('emailError');
+    const passwordMessage=document.getElementById('passwordError');
+    const confirmMessage=document.getElementById('confirm-error');
+    const usernamePattern=/^[a-zA-Z0-9](?:[a-zA-Z0-9._-]{1,18}[a-zA-Z0-9])$/;
+    const signupEmailPattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const confirmShow=document.getElementById('confirm-icon');
+    const showPassword=document.querySelector('.show-paswd');
+
+    function usernameValidate(){
+        if(signupUsername.value===""){
+            usernameMessage.textContent='please enter username';
+        }
+        else if(!usernamePattern.test(signupUsername.value)){
+            usernameMessage.textContent='alps,nums,-_ only allowed';
+        }
+        else{
+            usernameMessage.textContent='';
+        }
+    }
+     function emailValidate(){
+        if(signupEmail.value===""){
+            emailMessage.textContent='please enter email';
+        }
+        else if(!signupEmailPattern.test(signupEmail.value)){
+            emailMessage.textContent='enter valid email';
+        }
+        else{
+            emailMessage.textContent='';
+        }
+    }
+     function passwordValidate(){
+        if(signupPassword.value===""){
+            passwordMessage.textContent='please enter password';
+        }
+        else if(signupPassword.value.length<8){
+            passwordMessage.textContent='your password is weak';
+        }
+        else{
+            passwordMessage.textContent='';
+        }
+    }
+     function confirmValidate(){
+        if(signupConfirm.value===""){
+            confirmMessage.textContent='please re-enter password';
+        }
+        else if(signupPassword.value != signupConfirm.value){
+            confirmMessage.textContent='possword did not match';
+        }
+        else{
+            confirmMessage.textContent='';
+        }
+    }
+    showPassword.addEventListener('click',()=>{
+        if (signupPassword.type==='password') {
+            signupPassword.type='text';
+        } else {
+            signupPassword.type='password';
+        }
+    })
+    confirmShow.addEventListener('click',()=>{
+        if (signupConfirm.type==='password') {
+            signupConfirm.type='text';
+        } else {
+            signupConfirm.type='password';
+        }
+    })
+    function signupValidation(event) {
+        event.preventDefault();
+        usernameValidate();
+        emailValidate();
+        passwordValidate();
+        confirmValidate();
+    }
+
+</script>
+</html>
+`;
     const[showSignupCodes,setShowSignupCodes]=useState(false);
     function showcodeSignupHandler(){
         if(!showSignupCodes){
@@ -463,9 +869,12 @@ const loginPreCodesReact=`
                         <form className="loginForm">
                             <div className="inputBox">
                                 <label htmlFor="logusername">Username:</label>
-                                <input type="text" placeholder="username"
-                                className="formInputs" value={loginUsername}
-                                onChange={loginUsernameHandler} id="logusername"/>
+                                <div className="formInputs">
+                                    <input type="text" placeholder="username"
+                                     value={loginUsername}
+                                    onChange={loginUsernameHandler} id="logusername"/>
+                                    <RiUserFill />
+                                </div>
 
                                 <p className="formInputsnotDone"
                                 >{loginErrorUser}</p>
@@ -473,9 +882,13 @@ const loginPreCodesReact=`
 
                             <div className="inputBox">
                                 <label htmlFor="logPassword">Password:</label>
-                                <input type="password" placeholder="password"
-                                className="formInputs" value={loginPassword}
-                                onChange={loginPasswordHandler} id="logPassword"/>
+                                <div className="formInputs">
+                                    <input type={typeInput} placeholder="password"
+                                     value={loginPassword}
+                                    onChange={loginPasswordHandler} id="logPassword"/>
+                                    <IoEyeSharp onClick={loginShowPassword}/>
+                                </div>
+                                
 
                                 <p className="formInputsnotDone">{loginErrorPassword}</p>
                                 {/* className={isloginDone.password ? "formInputsDone" : "formInputsnotDone" } */}
@@ -496,7 +909,7 @@ const loginPreCodesReact=`
                             {codeShowbutton && <div className="loginDivisions">
                                 <div className="divisionDecide">
                                     <button className="reactButton" onClick={reactLogincodeHandler}>React js</button>
-                                    <button className="jsButton" onClick={vennilaJsCodesHadler}>Vennila js</button>
+                                    <button className="jsButton" onClick={vennilaJsCodesHadler}>js</button>
                                 </div>
 
                                 {loginDivision.reactLogin && <div className="reactJsLogin">
@@ -511,7 +924,7 @@ const loginPreCodesReact=`
                                 <div className="vannilaJsLoginCode">
                                     <LuCopy className={!loginCopied.vennilaCopied ? "formnotCopied" :  "formCopyicon"}
                                     onClick={()=>{copyLoginHandler('vennilaCopied',vennilaLoginCode)}}/>
-                                    <pre>
+                                    <pre className="loginreactpre">
                                         <p>{vennilaLoginCode}</p>
                                     </pre>
                                 </div>}
@@ -528,33 +941,43 @@ const loginPreCodesReact=`
                         <form className="loginForm">
                             <div className="inputBox">
                                 <label htmlFor="name">Username:</label>
-                                <input type="text" placeholder="Username" className="formInputs" 
-                                id="name" value={signUpusername} onChange={signupUsernameHandler}/>
-
+                                <div className="formInputs">
+                                    <input type="text" placeholder="Username"  
+                                    id="name" value={signUpusername} onChange={signupUsernameHandler}/>
+                                    <RiUserFill />
+                                </div>
                                 <p className="formInputsnotDone">{signupErrorMessage.username}</p>
                             </div>
 
                             <div className="inputBox">
                                 <label htmlFor="email">Email:</label>
-                                <input type="email" placeholder="Email" className="formInputs" 
-                                id="email" value={signupEmail} onChange={signupEmailHandler}/>
+                                <div className="formInputs">
+                                    <input type="email" placeholder="Email"  
+                                    id="email" value={signupEmail} onChange={signupEmailHandler}/>
+                                    <MdEmail />
+                                </div>
 
                                 <p className="formInputsnotDone">{signupErrorMessage.email}</p>
                             </div>
                             
                             <div className="inputBox">
                                 <label htmlFor="passwords">Password:</label>
-                                <input type="password" placeholder="Password" className="formInputs" 
-                                id="passwords" value={signupPassword} onChange={signupPasswordHandler}/>
+                                <div className="formInputs" >
+                                    <input type="password" placeholder="Password" 
+                                    id="passwords" value={signupPassword} onChange={signupPasswordHandler}/>
+                                    <IoEyeSharp />
+                                </div>
 
                                 <p className="formInputsnotDone">{signupErrorMessage.password}</p>
                             </div>
 
                             <div className="inputBox">
                                 <label htmlFor="confirm">Confirm Password:</label>
-                                <input type="password" placeholder="Confirm password" className="formInputs" 
-                                id="confirm" value={confirmSignup} onChange={signupConfirmHandle}/>
-
+                                <div className="formInputs" >
+                                    <input type="password" placeholder="Confirm password" 
+                                    id="confirm" value={confirmSignup} onChange={signupConfirmHandle}/>
+                                     <IoEyeSharp />
+                                </div>
                                 <p className="formInputsnotDone">{signupErrorMessage.confirmPassword}</p>
                             </div>
 
@@ -575,7 +998,7 @@ const loginPreCodesReact=`
 
                                     <div className="divisionDecide">
                                         <button className="reactButton" onClick={signupreactCondition}>React js</button>
-                                        <button className="jsButton" onClick={signupVennilaCondition}>Vennila js</button>
+                                        <button className="jsButton" onClick={signupVennilaCondition}>js</button>
                                     </div>
 
                                     {loginDivision.signupReact && <div className="signUpreactPreview">
@@ -587,9 +1010,10 @@ const loginPreCodesReact=`
                                     </div>}
 
                                     {loginDivision.signupVennila && <div className="signupvennilaPreview">
-                                        <LuCopy />
+                                        <LuCopy onClick={()=>{copyLoginHandler('signupVennila',signupjscode)}}
+                                        className={!loginCopied.signupVennila ? "formnotCopied" : "formCopyicon"}/>
                                         <pre className="loginreactpre">
-                                            <p>vennila js code is coming soon..</p>
+                                            <p>{signupjscode}</p>
                                         </pre>
                                     </div>}
 

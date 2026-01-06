@@ -1,0 +1,78 @@
+:root{
+    --LightBgColor:#0B0729;
+    --darkTextColor:#fff;
+    --primaryBgcards:#F7F7F7;
+    --secondarytextColor:rgb(35, 34, 92);
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.loginFormSection{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+}
+.formHeading{
+    color: var(--LightBgColor);
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; 
+    background-color: var(--primaryBgcards);
+    color: var(--LightBgColor); 
+    padding: 20px;
+    border-radius: 10px;
+    width: 375px;
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.formInputs{
+    width: 275px;
+    outline: none;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    padding: 9px;
+    color: var(--LightBgColor);
+    background-color: var(--darkTextColor);
+    display: flex;
+    align-items: center;
+}
+.formInputs input{
+    border: none;
+    outline: none;
+    width: 270px;
+}
+.formInputs.input::placeholder{
+    color: var(--LightBgColor);
+}
+.formButtons{
+    width: 75px;
+    border: none;
+    outline: none;
+    height: 30px;
+    background-color: var(--LightBgColor);
+    color: var(--darkTextColor);
+    border-radius: 5px;
+    margin: 5px 0px 0px 0px;
+    transition: all 0.3s ease-in-out;
+}
+.formButtons:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.formInputsnotDone{
+    color: red;
+    height: 20px;
+}

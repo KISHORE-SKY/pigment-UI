@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.loginFormSection{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+}
+.formHeading{
+    color: #0B0729;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; 
+    background-color: #F7F7F7;
+    color: #0B0729; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 375px;
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.formInputs{
+    width: 275px;
+    outline: none;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+    padding: 9px;
+    color: #0B0729;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+.formInputs input{
+    border: none;
+    outline: none;
+    width: 270px;
+}
+.formInputs.input::placeholder{
+    color: #0B0729;
+}
+.formButtons{
+    width: 75px;
+    border: none;
+    outline: none;
+    height: 30px;
+    background-color: #0B0729;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px 0px 0px 0px;
+    transition: all 0.3s ease-in-out;
+}
+.formButtons:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.formInputsnotDone{
+    color: red;
+    height: 20px;
+}
+</style>
+
+<body>
+    <section class="loginFormSection">
+        <h3 class="formHeading">Login</h3>
+        <form class="loginForm">
+            <div class="inputBox">
+                <label for="loginusername">Username:</label>
+                <div class="formInputs">
+                    <input type="text" placeholder="enter username" id="loginusername">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                
+                <p class="formInputsnotDone" id="username-message"></p>
+            </div>
+
+            <div class="inputBox">
+                <label for="loginPassword">Password:</label>
+                <div  class="formInputs">
+                    <input type="password" placeholder="enter password" id="loginPassword">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+               
+                <p class="formInputsnotDone" id="password-message"></p>
+            </div>
+
+            <div>
+                <button class="formButtons" id="login-button" onclick="loginValidation(event)">Login</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+<script>
+
+const usernameInput=document.getElementById('loginusername');
+const passwordInput=document.getElementById('loginPassword');
+const errorMessageUsername=document.getElementById('username-message');
+const errorMessagePassword=document.getElementById('password-message');
+const submitButton=document.getElementById('login-button');
+const usernamePattern=/^[a-zA-Z0-9](?:[a-zA-Z0-9._-]{1,18}[a-zA-Z0-9])$/;
+const showPassword=document.querySelector('.fa-eye');
+
+function usernameValidation(){
+    if(usernameInput.value===""){
+        errorMessageUsername.textContent='please enter username';
+    }
+    else if(!usernamePattern.test(usernameInput.value)){
+        errorMessageUsername.textContent='enter valid username';
+    }
+    else{
+        errorMessageUsername.textContent='';
+    }
+}
+
+function passwordValidation() {
+    if(passwordInput.value===""){
+        errorMessagePassword.textContent='please enter Password';
+    }
+    else{
+        errorMessagePassword.textContent='';
+    }
+}
+showPassword.addEventListener('click',()=>{
+    if(passwordInput.type==='password'){
+        passwordInput.type='text'
+    }
+    else{
+        passwordInput.type='password'
+    }
+})
+
+
+function loginValidation(event){
+    event.preventDefault();
+
+    usernameValidation();
+    passwordValidation();
+}
+
+</script>
+</html>
