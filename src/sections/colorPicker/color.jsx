@@ -24,15 +24,18 @@ function ColorPicker() {
         hsl:false,
         rgba:false
     });
-
+    const [alphaOpacity,setAlphaOpacity]=useState(1);
     const rgb=colord(hexColor).toRgb();
     const hsl=colord(hexColor).toHsl();
-    const rgba=colord(hexColor).toRgb();
+    const rgba=colord(hexColor).alpha(alphaOpacity).toRgb();
 
     const rgbText=`${rgb.r},${rgb.g},${rgb.b}`;
     const hslText=`${Math.round(hsl.h)},${Math.round(hsl.s)}%,${Math.round(hsl.l)}%`;
     const rgbaText=`${rgba.r},${rgba.g},${rgba.b},${rgba.a}`;
 
+    function colorOpacityAlpha(event){
+        setAlphaOpacity(event.target.value);
+    }
     async function copyStateHandler(type,text){
         try{
             await navigator.clipboard.writeText(text); 
@@ -48,7 +51,6 @@ function ColorPicker() {
         }
     }
 
-    
     return(
         <>
             <section className="colorPickSection">
@@ -60,26 +62,8 @@ function ColorPicker() {
                     <div className="inputColor">
                         <p style={{margin:'5px',fontSize:'18px'}}>Pick a Color</p>
                         <HexColorPicker color={hexColor} onChange={setHexColor} className="picker-wrapper"/>
-                    </div>
-
-                    <div>
-                        <div className="previewIcon">
-                            <p>Preview Color</p>
-                            <IoMdColorPalette  style={{color:'orangered'}}/>
-                        </div>
-                
-                    <div className="preViewColor" style={{backgroundColor:hexColor,
-                        width:'150px',
-                        height:'125px',
-                        borderRadius:'20px'
-                    }} />
-
-                    </div> 
-
-                    <div className="colorInfo">
-
-                        <div className="rgbaHslValues">
-                           <label className="hexLabel">HEX:</label>
+                    
+                        <label className="hexLabel">HEX:</label>
                            <div className="inputsOfColor">
                                 <HexColorInput color={hexColor} readOnly 
                                 onChange={setHexColor} 
@@ -88,6 +72,34 @@ function ColorPicker() {
                                 <LuCopy onClick={()=>copyStateHandler("hex",hexColor)} 
                                 className={!isCopied.hex ? 'coloredCopyInActive':'coloredCopy' }/>
                             </div>
+                    </div>
+
+                    <div>
+                        <div className="previewIcon">
+                            <p>Preview Color</p>
+                            <IoMdColorPalette  style={{color:'orangered'}}/>
+                        </div>
+                        <div className="preViewColor" style={{backgroundColor:hexColor,
+                            width:'150px',
+                            height:'125px',
+                            borderRadius:'20px'
+                        }} />
+
+                        <div className="previewIconTwo">
+                            <p>RGBA Preview Color</p>
+                            <IoMdColorPalette  style={{color:'orangered'}}/>
+                        </div>
+                         <div className="preViewColor" style={{backgroundColor:hexColor,
+                            width:'150px',
+                            height:'125px',
+                            borderRadius:'20px'
+                        }} />
+                    
+                    </div> 
+
+                    <div className="colorInfo">
+
+                        <div className="rgbaHslValues">
 
                            <label className="hexLabel">RGB:</label>
                            <div className="inputsOfColor">
@@ -109,26 +121,15 @@ function ColorPicker() {
                            <LuCopy onClick={()=>copyStateHandler("rgba",rgbaText)}
                             className={!isCopied.rgba ? 'coloredCopyInActive':'coloredCopy'}/>
                             </div>
+
+                            <div>
+                                <label className="hexLabel">Opacity:</label>
+                                <input className="colorRange" type="range" step="0.1" min='0.0' max='1'/>
+                            </div>
                         </div>
                 
                     </div>
 
-                    <div className="sloganOfPicker">
-                        <h3>Color Picker Tool:</h3>
-                        <div>
-                            <h4>Step 1:</h4>
-                            <p>Select a color by dragging the pointer.</p>
-                        </div>
-                        <div>
-                            <h4>Step 2:</h4>
-                            <p>See your chosen color displayed in the preview box.</p>
-                        </div>
-                        <div>
-                            <h4>Step 3:</h4>
-                            <p>Click Copy to copy the color code and paste it into your project.</p>
-                        </div>
-                        
-                    </div>
                 </section>
 
             </section>

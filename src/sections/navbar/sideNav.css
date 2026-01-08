@@ -28,6 +28,6 @@
     transition: color 0.2s ease;
 }
 .sideNavLists:hover{
-    color: rgb(35, 34, 92);
+    opacity: 0.5;
     cursor: pointer;
 }

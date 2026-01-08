@@ -28,7 +28,7 @@
 }
 .colorInput{
     height: 40px;
-    width: 180px;
+    width: 225px;
     background-color: var(--lightBgColor);
     color: var(--primaryTextColor);
     border-radius: 10px;
@@ -45,8 +45,11 @@
     border-radius: 10px;
     cursor: pointer;
     padding: 10px;
-    width: 180px;
+    width: 225px;
     margin: 5px;
+}
+.colorRange{
+    width: 225px;
 }
 .rgbaHslValues{
     display: flex;
@@ -63,9 +66,15 @@
     gap: 4px;
     margin: 5px;
 }
-.previewIcon p{
+.previewIconTwo{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 20px 5px 5px 5px;
+}
+.previewIcon p,.previewIconTwo p{
     color: var(--primaryTextColor);
-    font-size: 18px;
+    font-size: 17px;
 }
 .picker-wrapper .react-colorful__interactive{
     width: 275px;

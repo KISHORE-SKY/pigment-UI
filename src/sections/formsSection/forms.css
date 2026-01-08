@@ -122,19 +122,45 @@
 .divisionDecide{
     display: flex;
     gap: 4px;
+    margin-bottom: 5px;
 }
 .reactButton,.jsButton{
-    background-color: var(--darkTextColor);
     border-width: 0px 0px 0px 0px;
     padding: 5px;
     font-size: 15px;
     border-radius: 6px;
-    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
 .reactButton:hover,.jsButton:hover{
-    background-color: var(--primaryBgcards);
     color: var(--LightBgColor);
+    opacity: 0.5;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.buttonClicked{
+    padding: 5px;
+    font-size: 15px;
+    background-color: var(--primaryBgcards);
+    border-radius: 6px;
+    color: var(--LightBgColor);
+    border: none;
+    outline: none;
+}
+.conditions{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 50px;
+}
+.conditions input{
+    accent-color: var(--LightBgColor);
+    cursor: pointer;
+}
+.conditions label{
+    font-size: 13px;
+    margin-left: 5px;
 }
 .formCopyicon{
     align-self: flex-start;
@@ -156,6 +182,7 @@
 }
 .loginreactpre p{
     font-size: 14px;
+    padding: 5px;
 }
 
 .signupSection{
@@ -171,6 +198,20 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+}
+.copiedMessage{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+    height: 24px;
+}
+.copiedMessage p{
+    color: #0B0729;
+    background-color: var(--primaryBgcards);
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 5px;
 }
 
 @media (max-width:1023px){
