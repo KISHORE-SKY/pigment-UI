@@ -18,10 +18,11 @@
     justify-content: center;
     gap: 10px;
     padding: 60px 30px;
+    height: 100vh;
 }
 .hexLabel{
     color: var(--primaryTextColor);
-    font-size: 18px;
+    font-size: 17px;
     margin: 5px;
     display: block;
     align-self: flex-start;
@@ -37,7 +38,6 @@
     padding-inline: 10px;
     font-size: 17px;
     cursor: pointer;
-
 }
 .colorValueDisplay{
     background-color: var(--lightBgColor);
@@ -50,13 +50,16 @@
 }
 .colorRange{
     width: 225px;
+    accent-color: var(--primaryTextColor);
+    outline: none;
+     cursor: ew-resize;
 }
 .rgbaHslValues{
     display: flex;
     flex-direction: column;
     gap: 3px;
     margin: 10px 0px 0px 0px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -115,7 +118,12 @@
 .coloredCopyInActive{
     color:#0B0729;
 }
-
+.opacityColorBox{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 5px 20px 5px 5px;
+}
 
 
 @media (max-width:1204px){
@@ -124,6 +132,10 @@
         grid-template-columns: minmax(300px,325px) minmax(200px,250px);
          padding: 60px 20px;
         row-gap: 20px;
+        height: auto;
+    }
+    .rgbaHslValues{
+    align-items: flex-start;
     }
 }
 @media (max-width:900px){
@@ -133,6 +145,7 @@
         padding: 60px 30px;
         justify-content: flex-start;
         row-gap: 20px;
+        height: auto;
     }
 }
 @media (max-width:768px){

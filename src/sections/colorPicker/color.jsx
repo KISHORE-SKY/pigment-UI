@@ -17,7 +17,6 @@ function ColorPicker() {
         hslColor:'322, 87%, 51%',
         rgbaColor:'239,19,158,1'
     });
-    //const [rgbColorCopy,setRgbColorCopy]=useState('239, 19, 158');
     const [isCopied,setIsCopied]=useState({
         hex:false,
         rgb:false,
@@ -29,12 +28,12 @@ function ColorPicker() {
     const hsl=colord(hexColor).toHsl();
     const rgba=colord(hexColor).alpha(alphaOpacity).toRgb();
 
-    const rgbText=`${rgb.r},${rgb.g},${rgb.b}`;
-    const hslText=`${Math.round(hsl.h)},${Math.round(hsl.s)}%,${Math.round(hsl.l)}%`;
-    const rgbaText=`${rgba.r},${rgba.g},${rgba.b},${rgba.a}`;
+    const rgbText=`rgb(${rgb.r},${rgb.g},${rgb.b})`;
+    const hslText=`hsl(${Math.round(hsl.h)},${Math.round(hsl.s)}%,${Math.round(hsl.l)}%)`;
+    const rgbaText=`rgba(${rgba.r},${rgba.g},${rgba.b},${rgba.a})`;
 
     function colorOpacityAlpha(event){
-        setAlphaOpacity(event.target.value);
+        setAlphaOpacity(Number(event.target.value));
     }
     async function copyStateHandler(type,text){
         try{
@@ -89,10 +88,11 @@ function ColorPicker() {
                             <p>RGBA Preview Color</p>
                             <IoMdColorPalette  style={{color:'orangered'}}/>
                         </div>
-                         <div className="preViewColor" style={{backgroundColor:hexColor,
+                         <div style={{backgroundColor:`${rgbaText}`,
                             width:'150px',
                             height:'125px',
-                            borderRadius:'20px'
+                            borderRadius:'20px',
+                            border:'1px solid #0B0729'
                         }} />
                     
                     </div> 
@@ -101,12 +101,12 @@ function ColorPicker() {
 
                         <div className="rgbaHslValues">
 
-                           <label className="hexLabel">RGB:</label>
+                           <label className="hexLabel">RGB:</label> 
                            <div className="inputsOfColor">
                             <p className="colorValueDisplay">{rgbText}</p> 
                             <LuCopy onClick={()=>copyStateHandler("rgb",rgbText)} 
                             className={!isCopied.rgb ? 'coloredCopyInActive':'coloredCopy' }/>
-                           </div> 
+                           </div>
 
                            <label className="hexLabel">HSL: </label>
                            <div className="inputsOfColor">
@@ -115,16 +115,16 @@ function ColorPicker() {
                             className={!isCopied.hsl ? 'coloredCopyInActive':'coloredCopy'  }/>
                             </div>
 
-                           <label className="hexLabel">RGBA :</label>
+                           <label className="hexLabel">RGBA & Opacity:</label>
                            <div className="inputsOfColor">
                            <p className="colorValueDisplay">{rgbaText}</p>
                            <LuCopy onClick={()=>copyStateHandler("rgba",rgbaText)}
                             className={!isCopied.rgba ? 'coloredCopyInActive':'coloredCopy'}/>
                             </div>
 
-                            <div>
-                                <label className="hexLabel">Opacity:</label>
-                                <input className="colorRange" type="range" step="0.1" min='0.0' max='1'/>
+                            <div className="opacityColorBox">
+                                <input className="colorRange" type="range" step="0.1"
+                                 min='0.0' max='1' value={alphaOpacity} onInput={colorOpacityAlpha}/>
                             </div>
                         </div>
                 

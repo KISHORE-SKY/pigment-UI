@@ -102,14 +102,12 @@ function LinearGradients() {
                         <div className="linearColorPicker">
 
                             <div>
-                                <p>Initial Color:</p>
-                                <label>RGB:</label>
+                                <label>Initial Color:</label>
                                 <p className="angleLinearInput">{startRgb}</p>
                             </div>
 
                             <div>
-                                <p>End Color:</p>
-                                <label>RGB:</label>
+                                <label>End Color:</label>
                                 <p className="angleLinearInput">{endRgb}</p>
                             </div>
                             

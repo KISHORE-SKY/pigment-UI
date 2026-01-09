@@ -63,6 +63,8 @@
 }
 .boxShadowRanges input{
     width: 230px;
+      cursor: ew-resize;
+    accent-color: var(--LightBgColor);
 }
 .boxShadowColorPicker{
     display: flex;
@@ -110,7 +112,9 @@
 .rangeInput{
     width: 230px;
     outline: none;
-    color: var(--primaryTextColor);
+      cursor: ew-resize;
+    accent-color: var(--LightBgColor);
+
 }
 .shadowLables{
     color: var(--primaryTextColor);

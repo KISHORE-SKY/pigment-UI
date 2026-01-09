@@ -79,7 +79,6 @@ function FormComponents() {
 
     const [loginReactDivision,setLoginReactDivision]=useState('reactLogin');
     const [signupReactDivision,setSignupReactDivision]=useState('reactSignup');
-    const [signupJsDivision,setSignupJsDivision]=useState('signupJs');
 
     function reactLogincodeHandler() {
         if(loginReactDivision==='reactLogin'){

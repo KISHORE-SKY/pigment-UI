@@ -52,6 +52,7 @@
     outline: none;
     width: 275px;
     cursor: ew-resize;
+    accent-color: var(--LightBgColor);
 }
 .codesMorphism {
     text-align: left;
@@ -111,7 +112,7 @@
 } 
 .glassLabels{
     color: var(--LightBgColor);
-    font-size: 17.5px;
+    font-size: 17px;
     margin-bottom: 3px;
     display: block;
 }
