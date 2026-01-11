@@ -14,8 +14,8 @@ function Buttons() {
     const [backgroudPicker,setBackgroundPicker]=useState('#0B0729');
     const [textColor,setTextColor]=useState('#ffffff');
 
-    const basicHtmlCss=`<button className="basic">
-    Button</button>
+    const basicHtmlCss=`
+<button className="basic">Button</button>
 
 .basic{
     background-color:${backgroudPicker};
@@ -27,8 +27,8 @@ function Buttons() {
     height: 30px;
 }`;
 
-    const errorHtmlCss=`<button className="errors">
-    error</button>
+    const errorHtmlCss=`
+<button className="errors">error</button>
 
 .errors{
     border: 2px solid red;
@@ -38,8 +38,8 @@ function Buttons() {
     border-radius: 5px;
 }`;
 
-const disableHtmlCss=`<button className="disable" 
-    disabled>disabled</button>
+const disableHtmlCss=`
+<button className="disable" disabled>disabled</button>
 
 .disable{
     cursor: no-drop;
@@ -51,8 +51,8 @@ const disableHtmlCss=`<button className="disable"
     border-radius: 5px;
 }`;
 
-const hoverHtmlCss=`<button className="hovers">
-    Hover Me</button>
+const hoverHtmlCss=`
+<button className="hovers">Hover Me</button>
 
 .hovers{
     background-color:${backgroudPicker};
@@ -66,25 +66,9 @@ const hoverHtmlCss=`<button className="hovers">
     ease-out; 
 }`;
 
-const rippleHtmlCss=`<button className="ripple">
-    Ripple</button>
-
-.ripple{
-    background-color:${backgroudPicker};
-    color:${textColor};
-    width: 100px;
-    height: 35px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}`;
-
-    const neonBoxShadow=`0 0 10px ${backgroudPicker},
-        0 0 40px ${backgroudPicker},
-        0 0 80px ${backgroudPicker}`;
-
-    const neonHtmlCss=`<button className="neon">
-    Neon Light</button>
+    const neonBoxShadow=`0 0 10px ${backgroudPicker},0 0 40px ${backgroudPicker},0 0 80px ${backgroudPicker}`;
+    const neonHtmlCss=`
+<button className="neon">Neon Light</button>
 
 .neon{
     background-color:${backgroudPicker};
@@ -95,17 +79,34 @@ const rippleHtmlCss=`<button className="ripple">
     border: none;
     outline: none;
     border-radius: 5px;
-}`
+}`;
+
+    const neonTailwindCss=`
+<button className="w-[100px] h-[35px] border-none outline-none">Neon Light</button>
+    `;
+    const [neonCss,setNeonCss]=useState('is_ON');
+    const [neonTailwind,setNeonTailwind]=useState('is_OFF');
+
+    function neonCssState(){
+        setNeonCss('is_ON');
+        setNeonTailwind('is_OFF');
+    }
+    function neonTailwindState(){
+      setNeonCss('is_OFF')
+      setNeonTailwind('is_ON')
+    }
+
+    const [hoverCss,setHoverCss]=useState('is_ON');
+    const [hoverTailwind,setHoverTailwind]=useState('is_OFF');
     
+
     const [buttonCopied,setButtonCopied]=useState({
-        basic:false,
-        errorB:false,
-        disableB:false,
-        hovers:false,
-        neon:false,
-        //ripple:false,
-        // resetb:false,
-        // submitb:false
+        basic:true,
+        errorB:true,
+        disableB:true,
+        hovers:true,
+        neon:true,
+        tailwindNeon:true
     });
 
     const sliderRef = useRef(null);
@@ -128,7 +129,7 @@ const rippleHtmlCss=`<button className="ripple">
             setButtonCopied(prev=>({...prev,[type]:false}))
             setTimeout(()=>{
                setButtonCopied(prev=>({...prev,[type]:true}));
-            },700)
+            },800)
         }
         catch(error){
             console.log(`couldn't copy`);
@@ -151,14 +152,14 @@ const rippleHtmlCss=`<button className="ripple">
                         <section className="customColor">
 
                             <div className="backgroundPicker">
-                                <p className="pickerHeading">Background Color Picker</p>
+                                <label className="pickerHeading">Background Color</label>
                                 <HexColorPicker className="picker" onChange={setBackgroundPicker} color={backgroudPicker}/>
                                 <HexColorInput onChange={setBackgroundPicker}
                                  color={backgroudPicker} prefixed readOnly
                                  className="displayInput"/>
                             </div>
                             <div className="textColorPick">
-                                <p className="pickerHeading">Text Color Picker</p>
+                                <label className="pickerHeading">Text Color</label>
                                 <HexColorPicker className="picker" color={textColor} onChange={setTextColor}/>
                                 <HexColorInput prefixed readOnly color={textColor}
                                  onChange={setTextColor} className="displayInput"/>
@@ -180,9 +181,14 @@ const rippleHtmlCss=`<button className="ripple">
                                 </div>
 
                                 <div className="codePreviewButton">
-                                <LuCopy 
-                                onClick={()=>{copyStylesCode("basic",basicHtmlCss)}}
-                                className={!buttonCopied.basic ? "copyInActive" : "copyActive"}/>
+                                    <div className="buttonDivisions">
+                                        <button>CSS</button>
+                                        <button>Tailwind Css</button>
+                                    </div>
+                                    {buttonCopied.basic ?<LuCopy 
+                                    onClick={()=>{copyStylesCode("basic",basicHtmlCss)}}
+                                    className= "copyInActive" />:
+                                    <p className="copiedMessagebutton">Copied</p>}
                                    <pre className="buttonPreviewCode">
                                         <p>{basicHtmlCss}</p>
                                     </pre>
@@ -194,10 +200,15 @@ const rippleHtmlCss=`<button className="ripple">
                                 <h3>Error Button</h3>
                                 <button className="errorButton">error</button>
                                 </div>
-                                 <div className="codePreviewButton">
-                                <LuCopy 
-                                 onClick={()=>{copyStylesCode("errorB",errorHtmlCss)}}
-                                className={!buttonCopied.errorB ? "copyInActive" : "copyActive"}/>
+                                <div className="codePreviewButton">
+                                    <div className="buttonDivisions">
+                                        <button>CSS</button>
+                                        <button>Tailwind Css</button>
+                                    </div>
+                                    {buttonCopied.errorB ? <LuCopy 
+                                    onClick={()=>{copyStylesCode("errorB",errorHtmlCss)}}
+                                    className="copyInActive"/> : 
+                                    <p className="copiedMessagebutton">Copied</p>}
 
                                     <pre className="buttonPreviewCode">
                                         <p>{errorHtmlCss}</p>
@@ -210,9 +221,15 @@ const rippleHtmlCss=`<button className="ripple">
                                 <h3>Disabled Button</h3>
                                 <button className="disableButton" disabled>disabled</button>
                                 </div>
-                                 <div className="codePreviewButton">
-                                <LuCopy onClick={()=>{copyStylesCode("disableB",disableHtmlCss)}}
-                                className={!buttonCopied.disableB ? "copyInActive" : "copyActive"}/>
+                                <div className="codePreviewButton">
+                                    <div className="buttonDivisions">
+                                        <button>CSS</button>
+                                        <button>Tailwind Css</button>
+                                    </div>
+                                    {buttonCopied.disableB ? <LuCopy onClick={()=>{copyStylesCode("disableB",disableHtmlCss)}}
+                                    className="copyInActive"/> :
+                                    <p className="copiedMessagebutton">Copied</p>}
+
                                     <pre className="buttonPreviewCode">
                                         <p>{disableHtmlCss}</p>
                                     </pre>
@@ -220,82 +237,66 @@ const rippleHtmlCss=`<button className="ripple">
                                 </div>
                             </div>
 
-                            {/* <div className="buttonSections">
-                                <h3>Submit Button</h3>
-                                <button type="submit" className="submitButton"
-                                style={{backgroundColor:backgroudPicker,
-                                    color:textColor
-                                }}>Submit</button>
-                                 <div className="codePreviewButton">
-                                    <pre></pre>
-                                    <LuCopy />
-                                </div>
-                            </div> */}
-
-                            {/* <div className="buttonSections">
-                                <h3>Reset Button</h3>
-                                <button className="resetButton" type="reset"
-                                style={{backgroundColor:backgroudPicker,
-                                    color:textColor
-                                }}>Reset</button>
-                                 <div className="codePreviewButton">
-                                    <pre></pre>
-                                    <LuCopy />
-                                </div>
-                            </div> */}
-
                             <div className="buttonSections">
                                 <div className="buttonTopHeads">
-                                <h3>Hover Color Button</h3>
+                                <h3>Hover Button</h3>
                                 <button className="hoverButton"
                                 style={{ backgroundColor:isHover? textColor : backgroudPicker,
                                     color : isHover ? backgroudPicker : textColor,
-                                    
                                 }}
                                 onMouseEnter={()=>{setHover(true)}}
                                 onMouseLeave={()=>{setHover(false)}}>Hover Me</button>
                                 </div>
-                                 <div className="codePreviewButton">
-                                    <LuCopy onClick={()=>{copyStylesCode("hovers",hoverHtmlCss)}}
-                                        className={!buttonCopied.hovers ? "copyInActive" : "copyActive"}/>
+                                <div className="codePreviewButton">
+                                    <div className="buttonDivisions">
+                                        <button>CSS</button>
+                                        <button>Tailwind Css</button>
+                                    </div>
+
+                                    {buttonCopied.hovers ? <LuCopy onClick={()=>{copyStylesCode("hovers",hoverHtmlCss)}}
+                                        className= "copyInActive"/> :
+                                    <p className="copiedMessagebutton">Copied</p>}
                                     <pre className="buttonPreviewCode">
                                         <p>{hoverHtmlCss}</p>
                                     </pre>
                                 </div>
                             </div>
 
-                            {/* <div className="buttonSections">
-                                <h3>Ripple Button</h3>
-                                <button className="rippleButtton"
-                                style={{backgroundColor:backgroudPicker,
-                                    color:textColor
-                                }}>Ripple</button>
-                                 <div className="codePreviewButton">
-                                    <LuCopy onClick={()=>{copyStylesCode("ripple",rippleHtmlCss)}}
-                                        className={!buttonCopied.ripple ? "copyInActive" : "copyActive"}/>
-                                    <pre  className="buttonPreviewCode">
-                                        <p>{rippleHtmlCss}</p>
-                                    </pre>
-                                    
-                                </div>
-                            </div> */}
-
                             <div className="buttonSections">
                                 <div className="buttonTopHeads">
                                 <h3>Neon Button</h3>
-                                <button className="neonButton"
-                                style={{backgroundColor:backgroudPicker,
+                                    <button className="neonButton"
+                                    style={{backgroundColor:backgroudPicker,
                                     color:textColor,
                                     boxShadow:neonBoxShadow,
-                                }}>Neon Light</button>
+                                    }}>Neon Light</button>
                                 </div>
-                                 <div className="codePreviewButton">
-                                    <LuCopy onClick={()=>{copyStylesCode("neon",neonHtmlCss)}}
-                                        className={!buttonCopied.neon ? "copyInActive" : "copyActive"}/>
-                                    <pre className="buttonPreviewCode">
-                                        <p>{neonHtmlCss}</p>
-                                    </pre>
+                                
+                                <div className="codePreviewButton">
+                                    <div className="buttonDivisions">
+                                        <button className={neonCss==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                        onClick={neonCssState}>CSS</button>
+                                        <button className={neonTailwind==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"} onClick={neonTailwindState}>Tailwind Css</button>
+                                    </div>
+                                    {neonCss==='is_ON' && <div>
+                                        {buttonCopied.neon ? <LuCopy onClick={()=>{copyStylesCode("neon",neonHtmlCss)}}
+                                        className="copyInActive"/> :
+                                        <p className="copiedMessagebutton">Copied</p>}
+                                        <pre className="buttonPreviewCode">
+                                            <p>{neonHtmlCss}</p>
+                                        </pre>
+                                    </div>}
+                                    {neonTailwind==='is_ON' && <div>
+                                        {buttonCopied.tailwindNeon ? <LuCopy onClick={()=>{copyStylesCode("tailwindNeon",neonTailwindCss)}}
+                                        className="copyInActive"/> :
+                                        <p className="copiedMessagebutton">Copied</p>}
+                                        <pre className="buttonPreviewCode">
+                                            <p>{neonTailwindCss}</p>
+                                        </pre>
+                                    </div>}
+
                                 </div>
+
                             </div>
 
                          </Slider> 

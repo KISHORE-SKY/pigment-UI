@@ -117,12 +117,20 @@
 }
 .coloredCopyInActive{
     color:#0B0729;
+    cursor: pointer;
 }
 .opacityColorBox{
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin: 5px 20px 5px 5px;
+}
+.copiedMessageColor{
+    color: #0B0729;
+    background-color: var(--primaryBgcards);
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 5px;
 }
 
 

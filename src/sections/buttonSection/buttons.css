@@ -25,9 +25,15 @@
     justify-content: center;
     gap: 25px;
 }
+.backgroundPicker,.textColorPick{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
 .pickerHeading{
     color: var(--LightBgColor);
     margin: 0px 0px 10px 10px;
+    font-size: 17px;
 }
 .customColor{
     display: flex;
@@ -57,7 +63,7 @@
 } 
 .displayInput{
     width: 265px;
-    height: 30px;
+    height: 40px;
     background-color: var(--primaryBgcards);
     color: var(--LightBgColor);
     border-radius: 7px;
@@ -65,7 +71,7 @@
     outline: none;
     border: none;
     font-size: 15px;
-    margin: 15px 0px;
+    margin: 7px 0px;
 }
 .buttonTypes{
     display: grid;
@@ -81,12 +87,9 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 15px;
     outline: none;
     border: none;
-    min-height: 400px;
 }
 .slick-slide {
   padding: 0 13px; 
@@ -186,28 +189,76 @@
     border-radius: 5px;
     margin: 20px 11px 11px 11px; 
 }
+.buttonTopHeads{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
 .buttonPreviewCode{
-    background-color: var(--darkTextColor);
     color: var(--LightBgColor);
     border-radius: 9px;
     padding: 10px;
     font-size: 15px;
+    overflow: auto;
     height: 300px;
 }
-.copyActive{
-    color: #0fd207;
-    margin: 5px;
+.codePreviewButton{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    background-color: var(--darkTextColor);
+    color: var(--LightBgColor);
+    margin-top: 25px;
+    padding: 0px 6px 6px 0px;
+    border-radius: 7px;
+}
+.codePreviewButton p{
+    width: fit-content;
+    font-size: 16px;
+}
+.buttonDivisions{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.buttonDivisionsbutton{
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--LightBgColor);
+    margin-bottom: 5px;
+}
+.buttonDivisionsbutton:hover{
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+.buttonDivisionClicked{
+    background-color: var(--primaryBgcards);
+    opacity: 1;
+    border: none;
+    outline: none;
+    color: var(--LightBgColor);
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .copyInActive{
     color: var(--LightBgColor);
-    margin: 5px;
+    margin: 5px 5px 0px 9px;
+    cursor: pointer;
+    font-size: 16px;
 }
 .controllerSwipe{
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: relative;
-    bottom: 60px;
+    bottom: 0px;
     z-index: 10;
 }
 .previousButton,.nextButton{
@@ -220,6 +271,16 @@
     word-spacing: 2px;
     outline: none;
 }
+.copiedMessagebutton{
+    color: #0B0729;
+    background-color: var(--primaryBgcards);
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 5px 5px 0px 9px;
+    font-size: 16px;
+}
+
 
 @media (max-width:1024px){
    .buttonMainSection{
@@ -342,10 +403,6 @@
         grid-template-columns: minmax(290px,310px);
         justify-content: center;
     }
-    /* .picker .react-colorful__interactive,.react-colorful__saturation,
-    .react-colorful__hue{
-        width:  ;
-    } */
 }
 
 

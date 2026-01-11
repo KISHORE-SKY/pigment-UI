@@ -18,10 +18,10 @@ function ColorPicker() {
         rgbaColor:'239,19,158,1'
     });
     const [isCopied,setIsCopied]=useState({
-        hex:false,
-        rgb:false,
-        hsl:false,
-        rgba:false
+        hex:true,
+        rgb:true,
+        hsl:true,
+        rgba:true
     });
     const [alphaOpacity,setAlphaOpacity]=useState(1);
     const rgb=colord(hexColor).toRgb();
@@ -42,7 +42,7 @@ function ColorPicker() {
             setIsCopied(prev=>({...prev,[type]:false}));
             setTimeout(()=>{
                 setIsCopied(prev=>({...prev,[type]:true}));
-            },700)
+            },800)
             
         }
         catch(error){
@@ -68,8 +68,9 @@ function ColorPicker() {
                                 onChange={setHexColor} 
                                 prefixed className="colorInput" 
                                 />
-                                <LuCopy onClick={()=>copyStateHandler("hex",hexColor)} 
-                                className={!isCopied.hex ? 'coloredCopyInActive':'coloredCopy' }/>
+                                {isCopied.hex ? <LuCopy onClick={()=>copyStateHandler("hex",hexColor)} 
+                                className= 'coloredCopyInActive'/> :
+                                <p className="copiedMessageColor">Copied</p>}
                             </div>
                     </div>
 
@@ -103,23 +104,26 @@ function ColorPicker() {
 
                            <label className="hexLabel">RGB:</label> 
                            <div className="inputsOfColor">
-                            <p className="colorValueDisplay">{rgbText}</p> 
-                            <LuCopy onClick={()=>copyStateHandler("rgb",rgbText)} 
-                            className={!isCopied.rgb ? 'coloredCopyInActive':'coloredCopy' }/>
+                                <p className="colorValueDisplay">{rgbText}</p> 
+                               {isCopied.rgb ? <LuCopy onClick={()=>copyStateHandler("rgb",rgbText)} 
+                                className='coloredCopyInActive'/>
+                                :<p className="copiedMessageColor" >Copied</p>}
                            </div>
 
                            <label className="hexLabel">HSL: </label>
                            <div className="inputsOfColor">
                            <p className="colorValueDisplay">{hslText}</p>
-                            <LuCopy onClick={()=>copyStateHandler("hsl",hslText)} 
-                            className={!isCopied.hsl ? 'coloredCopyInActive':'coloredCopy'  }/>
+                           {isCopied.hsl ? <LuCopy onClick={()=>copyStateHandler("hsl",hslText)} 
+                            className= 'coloredCopyInActive'/>
+                            :<p className="copiedMessageColor">Copied</p>}
                             </div>
 
                            <label className="hexLabel">RGBA & Opacity:</label>
                            <div className="inputsOfColor">
                            <p className="colorValueDisplay">{rgbaText}</p>
-                           <LuCopy onClick={()=>copyStateHandler("rgba",rgbaText)}
-                            className={!isCopied.rgba ? 'coloredCopyInActive':'coloredCopy'}/>
+                           {isCopied.rgba ? <LuCopy onClick={()=>copyStateHandler("rgba",rgbaText)}
+                            className='coloredCopyInActive'/> :
+                            <p className="copiedMessageColor">Copied</p> }
                             </div>
 
                             <div className="opacityColorBox">
