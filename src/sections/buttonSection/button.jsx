@@ -12,7 +12,7 @@ import { useRef } from "react";
 function Buttons() {
 
     const [backgroudPicker,setBackgroundPicker]=useState('#0B0729');
-    const [textColor,setTextColor]=useState('#ffffff');
+    const [textColor,setTextColor]=useState('#0edc34');
 
     const basicHtmlCss=`
 <button className="basic">Button</button>
@@ -26,6 +26,10 @@ function Buttons() {
     width: 90px;
     height: 30px;
 }`;
+const basicTailwindCode=`
+<button className="h-[30px] w-[90px] border-none">Basic</button>
+`;
+
 
     const errorHtmlCss=`
 <button className="errors">error</button>
@@ -37,6 +41,9 @@ function Buttons() {
     height: 35px;
     border-radius: 5px;
 }`;
+const errorTailwindCode=`
+<button className="w-[100px] h-[35px]">error</button>
+`;
 
 const disableHtmlCss=`
 <button className="disable" disabled>disabled</button>
@@ -50,6 +57,10 @@ const disableHtmlCss=`
     color: #ffffff; 
     border-radius: 5px;
 }`;
+const tailwindDisableCode=`
+<button className="cursor:no-drop w-[100px] h-[35px] bg-color 
+text-color-white " disabled>disabled</button>
+`;
 
 const hoverHtmlCss=`
 <button className="hovers">Hover Me</button>
@@ -62,9 +73,13 @@ const hoverHtmlCss=`
     border: none;
     outline: none;
     border-radius: 5px;
-    transition: all 0.3s 
-    ease-out; 
-}`;
+    transition: all 0.3s ease-out; 
+}
+.hovers:hover{
+    background-color:${textColor};
+    color:${backgroudPicker};
+}  
+`;
 
     const neonBoxShadow=`0 0 10px ${backgroudPicker},0 0 40px ${backgroudPicker},0 0 80px ${backgroudPicker}`;
     const neonHtmlCss=`
@@ -84,6 +99,9 @@ const hoverHtmlCss=`
     const neonTailwindCss=`
 <button className="w-[100px] h-[35px] border-none outline-none">Neon Light</button>
     `;
+    const hoverTailwindCode=`
+<button>Hover Me</button>
+    `;
     const [neonCss,setNeonCss]=useState('is_ON');
     const [neonTailwind,setNeonTailwind]=useState('is_OFF');
 
@@ -98,7 +116,47 @@ const hoverHtmlCss=`
 
     const [hoverCss,setHoverCss]=useState('is_ON');
     const [hoverTailwind,setHoverTailwind]=useState('is_OFF');
-    
+    function hoverCssState(){
+        setHoverCss('is_ON');
+        setHoverTailwind('is_OFF');
+    }
+    function hoverTailwindState(){
+      setHoverCss('is_OFF');
+      setHoverTailwind('is_ON');
+    }
+
+    const [disableCss,setDisableCss]=useState('is_ON');
+    const [disableTailwind,setDisableTailwind]=useState('is_OFF');
+    function disableCssState(){
+        setDisableCss('is_ON');
+        setDisableTailwind('is_OFF');
+    }
+    function disableTailwindState(){
+      setDisableCss('is_OFF');
+      setDisableTailwind('is_ON');
+    }
+
+    const [errorCss,setErrorCss]=useState('is_ON');
+    const [errorTailwind,setErrorTailwind]=useState('is_OFF');
+    function errorCssState(){
+        setErrorCss('is_ON');
+        setErrorTailwind('is_OFF');
+    }
+    function errorTailwindState(){
+      setErrorCss('is_OFF');
+      setErrorTailwind('is_ON');
+    }
+
+    const [basicCss,setBasicCss]=useState('is_ON');
+    const [basicTailwind,setBasicTailwind]=useState('is_OFF');
+    function basicCssState(){
+    setBasicCss('is_ON');
+    setBasicTailwind('is_OFF');
+    }
+    function basicTailwindState(){
+      setBasicCss('is_OFF');
+      setBasicTailwind('is_ON');
+    }
 
     const [buttonCopied,setButtonCopied]=useState({
         basic:true,
@@ -106,7 +164,11 @@ const hoverHtmlCss=`
         disableB:true,
         hovers:true,
         neon:true,
-        tailwindNeon:true
+        tailwindNeon:true,
+        tailwindHover:true,
+        tailwindDisable:true,
+        tailwindError:true,
+        tailwindBasic:true
     });
 
     const sliderRef = useRef(null);
@@ -182,16 +244,33 @@ const hoverHtmlCss=`
 
                                 <div className="codePreviewButton">
                                     <div className="buttonDivisions">
-                                        <button>CSS</button>
-                                        <button>Tailwind Css</button>
+                                        <button className={basicCss==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                         onClick={basicCssState}>CSS</button>
+                                        <button className={basicTailwind==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                         onClick={basicTailwindState}>Tailwind Css</button>
                                     </div>
-                                    {buttonCopied.basic ?<LuCopy 
-                                    onClick={()=>{copyStylesCode("basic",basicHtmlCss)}}
-                                    className= "copyInActive" />:
-                                    <p className="copiedMessagebutton">Copied</p>}
-                                   <pre className="buttonPreviewCode">
-                                        <p>{basicHtmlCss}</p>
-                                    </pre>
+                                    {basicCss==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.basic ?<LuCopy 
+                                            onClick={()=>{copyStylesCode("basic",basicHtmlCss)}}
+                                            className= "copyInActive" />:
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
+                                        <pre className="buttonPreviewCode">
+                                            <p>{basicHtmlCss}</p>
+                                        </pre>
+                                    </div>}
+                                    {basicTailwind==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.tailwindBasic ?<LuCopy 
+                                            onClick={()=>{copyStylesCode("tailwindBasic",basicTailwindCode)}}
+                                            className= "copyInActive" />:
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
+                                        <pre className="buttonPreviewCode">
+                                            <p>{basicTailwindCode}</p>
+                                        </pre>
+                                    </div>}
                                 </div>
                             </div>
 
@@ -200,39 +279,78 @@ const hoverHtmlCss=`
                                 <h3>Error Button</h3>
                                 <button className="errorButton">error</button>
                                 </div>
+
                                 <div className="codePreviewButton">
                                     <div className="buttonDivisions">
-                                        <button>CSS</button>
-                                        <button>Tailwind Css</button>
+                                        <button className={errorCss==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                        onClick={errorCssState}>CSS</button>
+                                        <button className={errorTailwind==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                        onClick={errorTailwindState}>Tailwind Css</button>
                                     </div>
-                                    {buttonCopied.errorB ? <LuCopy 
-                                    onClick={()=>{copyStylesCode("errorB",errorHtmlCss)}}
-                                    className="copyInActive"/> : 
-                                    <p className="copiedMessagebutton">Copied</p>}
+                                    {errorCss==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.errorB ? <LuCopy 
+                                            onClick={()=>{copyStylesCode("errorB",errorHtmlCss)}}
+                                            className="copyInActive"/> : 
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
 
-                                    <pre className="buttonPreviewCode">
-                                        <p>{errorHtmlCss}</p>
-                                    </pre>
+                                        <pre className="buttonPreviewCode">
+                                            <p>{errorHtmlCss}</p>
+                                        </pre>
+                                    </div>}
+                                    {errorTailwind==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.tailwindError ? <LuCopy 
+                                            onClick={()=>{copyStylesCode("tailwindError",errorTailwindCode)}}
+                                            className="copyInActive"/> : 
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
+
+                                        <pre className="buttonPreviewCode">
+                                            <p>{errorTailwindCode}</p>
+                                        </pre>
+                                    </div>}
                                 </div>
                             </div>
 
                             <div className="buttonSections">
                                 <div className="buttonTopHeads">
-                                <h3>Disabled Button</h3>
-                                <button className="disableButton" disabled>disabled</button>
+                                    <h3>Disabled Button</h3>
+                                    <button className="disableButton" disabled>disabled</button>
                                 </div>
+
                                 <div className="codePreviewButton">
                                     <div className="buttonDivisions">
-                                        <button>CSS</button>
-                                        <button>Tailwind Css</button>
+                                        <button className={disableCss==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                         onClick={disableCssState}>CSS</button>
+                                        <button className={disableTailwind==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                         onClick={disableTailwindState}>Tailwind Css</button>
                                     </div>
-                                    {buttonCopied.disableB ? <LuCopy onClick={()=>{copyStylesCode("disableB",disableHtmlCss)}}
-                                    className="copyInActive"/> :
-                                    <p className="copiedMessagebutton">Copied</p>}
 
-                                    <pre className="buttonPreviewCode">
-                                        <p>{disableHtmlCss}</p>
-                                    </pre>
+                                    {disableCss==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.disableB ? <LuCopy onClick={()=>{copyStylesCode("disableB",disableHtmlCss)}}
+                                            className="copyInActive"/> :
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
+
+                                        <pre className="buttonPreviewCode">
+                                            <p>{disableHtmlCss}</p>
+                                        </pre>
+                                    </div>}
+
+                                    {disableTailwind==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.tailwindDisable ? <LuCopy onClick={()=>{copyStylesCode("tailwindDisable",tailwindDisableCode)}}
+                                            className="copyInActive"/> :
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
+
+                                        <pre className="buttonPreviewCode">
+                                            <p>{tailwindDisableCode}</p>
+                                        </pre>
+                                    </div>}
 
                                 </div>
                             </div>
@@ -249,16 +367,33 @@ const hoverHtmlCss=`
                                 </div>
                                 <div className="codePreviewButton">
                                     <div className="buttonDivisions">
-                                        <button>CSS</button>
-                                        <button>Tailwind Css</button>
+                                        <button className={hoverCss==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                        onClick={hoverCssState}>CSS</button>
+                                        <button className={hoverTailwind==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"}
+                                        onClick={hoverTailwindState}>Tailwind Css</button>
                                     </div>
+                                    {hoverCss==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.hovers ? <LuCopy onClick={()=>{copyStylesCode("hovers",hoverHtmlCss)}}
+                                            className= "copyInActive"/> :
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
 
-                                    {buttonCopied.hovers ? <LuCopy onClick={()=>{copyStylesCode("hovers",hoverHtmlCss)}}
-                                        className= "copyInActive"/> :
-                                    <p className="copiedMessagebutton">Copied</p>}
-                                    <pre className="buttonPreviewCode">
-                                        <p>{hoverHtmlCss}</p>
-                                    </pre>
+                                        <pre className="buttonPreviewCode">
+                                            <p>{hoverHtmlCss}</p>
+                                        </pre>
+                                    </div>}
+                                     {hoverTailwind==='is_ON' && <div>
+                                        <div className="copySection">
+                                            {buttonCopied.tailwindHover ? <LuCopy onClick={()=>{copyStylesCode("tailwindHover",hoverTailwindCode)}}
+                                            className= "copyInActive"/> :
+                                            <p className="copiedMessagebutton">Copied</p>}
+                                        </div>
+
+                                        <pre className="buttonPreviewCode">
+                                            <p>{hoverTailwindCode}</p>
+                                        </pre>
+                                    </div>}
                                 </div>
                             </div>
 
@@ -279,17 +414,21 @@ const hoverHtmlCss=`
                                         <button className={neonTailwind==='is_ON' ? "buttonDivisionClicked" : "buttonDivisionsbutton"} onClick={neonTailwindState}>Tailwind Css</button>
                                     </div>
                                     {neonCss==='is_ON' && <div>
-                                        {buttonCopied.neon ? <LuCopy onClick={()=>{copyStylesCode("neon",neonHtmlCss)}}
-                                        className="copyInActive"/> :
-                                        <p className="copiedMessagebutton">Copied</p>}
+                                        <div className="copySection">
+                                            {buttonCopied.neon ? <LuCopy onClick={()=>{copyStylesCode("neon",neonHtmlCss)}}
+                                            className="copyInActive"/> :
+                                            <p className="copiedMessagebutton" style={{fontSize:'15px'}}>Copied</p>}
+                                        </div>
                                         <pre className="buttonPreviewCode">
                                             <p>{neonHtmlCss}</p>
                                         </pre>
                                     </div>}
                                     {neonTailwind==='is_ON' && <div>
-                                        {buttonCopied.tailwindNeon ? <LuCopy onClick={()=>{copyStylesCode("tailwindNeon",neonTailwindCss)}}
-                                        className="copyInActive"/> :
-                                        <p className="copiedMessagebutton">Copied</p>}
+                                        <div className="copySection">
+                                            {buttonCopied.tailwindNeon ? <LuCopy onClick={()=>{copyStylesCode("tailwindNeon",neonTailwindCss)}}
+                                            className="copyInActive"/> :
+                                            <p className="copiedMessagebutton" style={{fontSize:'15px'}}>Copied</p>}
+                                        </div>
                                         <pre className="buttonPreviewCode">
                                             <p>{neonTailwindCss}</p>
                                         </pre>

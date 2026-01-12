@@ -124,7 +124,6 @@
 }
 
 
-
 .normalButton{
     width: 100px;
     height: 35px;
@@ -274,11 +273,13 @@
 .copiedMessagebutton{
     color: #0B0729;
     background-color: var(--primaryBgcards);
-    font-size: 14px;
-    padding: 3px;
+    padding: 2px;
     border-radius: 5px;
-    margin: 5px 5px 0px 9px;
-    font-size: 16px;
+    margin: 0px 5px 0px 9px;
+    font-size: 15px;
+}
+.copySection{
+    height: 18px;
 }
 
 
