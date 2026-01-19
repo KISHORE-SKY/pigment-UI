@@ -173,6 +173,11 @@ select option:checked{
 .messageSection{
     height: 20px;
 }
+.css-18jp67o-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-18jp67o-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-18jp67o-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 9px 9px;
+    outline: none;
+    font-size: 17px;
+}
 @media (max-width:1179px){
 .mainradialSection{
     grid-template-columns: minmax(225px,300px) minmax(225px,285px);

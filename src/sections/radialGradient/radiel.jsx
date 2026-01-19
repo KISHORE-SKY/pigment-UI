@@ -3,32 +3,49 @@ import SideBar from "../navbar/sidebar"
 import { LuCopy } from "react-icons/lu"; 
 import { HexColorPicker,HexColorInput } from "react-colorful"
 import { useState } from "react";
-import { colord } from "colord"
+import { colord } from "colord";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 function RadielGradient() {
     const [radialPicker,setRadialPicker]=useState('#29c522');
     const [radialEndPicker,setRadialEndPicker]=useState('#0B0729');
 
-    const [radialAngle,setRadialAngle]=useState('circle');
+    const [radialShape,setRadialShape]=useState('ellipse');
+    function radialShapeHandler(event) {
+        setRadialShape(event.target.value);
+    }
+
+    const [radialAngle,setRadialAngle]=useState('farthest-side');
     function radialAngleHandler(event){
         setRadialAngle(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
     }
+
+    const [radialPosition,setRadialPosition]=useState('center');
+    function radialPositionHandler(event) {
+        setRadialPosition(event.target.value);
+    }
+
    
     const radialStartRGB=colord(radialPicker).toRgb();
     const startRGBRadial=`rgb(${radialStartRGB.r},${radialStartRGB.g},${radialStartRGB.b})`;
     const radialEndRGB=colord(radialEndPicker).toRgb();
     const endRGBRadial=`rgb(${radialEndRGB.r},${radialEndRGB.g},${radialEndRGB.b})`;
 
-    const bgRadialGradient=`radial-gradient(${radialAngle},${radialPicker},${radialEndPicker})`
+    const bgRadialGradient=`radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker})`
 
     const radialGradientCode=`.radialBg{
-        background:-webkit-radial-gradient(${radialAngle},${radialPicker},${radialEndPicker});
-        background:radial-gradient(${radialAngle},${radialPicker},${radialEndPicker});
+        background:-webkit-radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker});
+        background:radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker});
     }`;
 
+    const convertedTailwindCode=bgRadialGradient.replaceAll(" ","_");
     const radialTailwindCode=`
-<div className="w-[100px] h-[75px] bg-[radial-gradient(${radialAngle},${radialPicker},${radialEndPicker})]"></div>`
+<div className="w-[100px] h-[75px] bg-[radial-gradient(${convertedTailwindCode},${radialPicker},${radialEndPicker})]"></div>`
 
     const [radialCopied,setRadialCopied]=useState({
         radialCss:true,
@@ -125,18 +142,87 @@ function RadielGradient() {
                 </section>
 
                 <section className="customGradient">
+                     <div className="anglesRadial">
+                        <label>Shape:</label>
+                        <Box sx={{ minWidth: 120,
+                         }}>
+                            <FormControl fullWidth>
+                                {/* <InputLabel id="demo-simple-select-label">Shape:</InputLabel> */}
+                                <Select sx={{color:'#0B0729', 
+                                    backgroundColor:'#F7F7F7',
+                                    ".MuiSelect-icon":{
+                                        color:'#0B0729'
+                                    }
+                                }}
+                                variant="outlined"
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={radialShape}
+                                onChange={radialShapeHandler}>
+                                    <MenuItem value={"ellipse"}>ellipse</MenuItem>
+                                    <MenuItem value={'circle'}>circle</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </div>
                     <div className="anglesRadial">
                         <label>Size:</label>
-                        <select className="radialSize"  value={radialAngle} onChange={radialAngleHandler}>
-                            <option defaultValue="ellipse" disabled>ellipse</option>
-                            <option>closest-side</option>
-                            <option>circle</option>
-                            <option>closest-corner</option>
-                            <option>farthest-side</option>
-                            <option>farthest-corner</option>
-                        </select>
-
+                        <Box sx={{ minWidth: 120 }}>
+                            <FormControl fullWidth>
+                                {/* <InputLabel id="demo-simple-select-label">Size:</InputLabel> */}
+                                <Select sx={{color:'#0B0729', 
+                                    backgroundColor:'#F7F7F7',
+                                    ".MuiSelect-icon":{
+                                        color:'#0B0729'
+                                    }
+                                }}
+                                variant="outlined"
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={radialAngle}
+                                onChange={radialAngleHandler}>
+                                    <MenuItem value={'farthest-side'}>farthest-side</MenuItem>
+                                    <MenuItem value={'closest-side'}>closest-side</MenuItem>
+                                    <MenuItem value={'closest-corner'}>closest-corner</MenuItem>
+                                    <MenuItem value={'farthest-corner'}>farthest-corner</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
                     </div>
+
+                    <div className="anglesRadial">
+                        <label>Position:</label>
+                        <Box sx={{ minWidth: 120 }}>
+                            <FormControl fullWidth>
+                                {/* <InputLabel id="demo-simple-select-label">Position:</InputLabel> */}
+                                <Select sx={{color:'#0B0729', 
+                                    backgroundColor:'#F7F7F7',
+                                    ".MuiSelect-icon":{
+                                        color:'#0B0729'
+                                    },
+                                    "& .MuiOutlinedInput-notchedOutline":{
+                                        outline:'none'
+                                    }
+                                }}
+                                variant="outlined"
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={radialPosition}
+                                onChange={radialPositionHandler}>
+                                    <MenuItem value={"center"}>center</MenuItem>
+                                    <MenuItem value={'top'}>top</MenuItem>
+                                    <MenuItem value={'bottom'}>bottom</MenuItem>
+                                    <MenuItem value={'left'}>left</MenuItem>
+                                    <MenuItem value={'right'}>right</MenuItem>
+                                    <MenuItem value={'top left'}>top left</MenuItem>
+                                    <MenuItem value={'top right'}>top right</MenuItem>
+                                    <MenuItem value={'bottom left'}>bottom left</MenuItem>
+                                    <MenuItem value={'bottom right'}>bottom right</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </div>
+
                     <div className="startingColorPicker">
                         <label className="pickerLabels">Initial Color:</label>
                         <HexColorPicker color={radialPicker} onChange={setRadialPicker} className="picker"/>
