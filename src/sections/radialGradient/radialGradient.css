@@ -15,7 +15,7 @@
     grid-template-columns: minmax(225px,300px) minmax(225px,285px) minmax(225px,285px);
     justify-content: center;
     gap: 20px;
-    padding: 60px 10px;
+    padding: 60px 10px;   
 }
 .previewRadialSection{
     display: flex;

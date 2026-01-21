@@ -29,7 +29,7 @@ function LinearGradients() {
     background:linear-gradient(${angles}deg,${colorPick},${colorPickEnd});
 }`;
 
-    const linearTailwindCode=`<div className="bg-[linear-gradient(${angles}deg,${colorPick},${colorPickEnd})]></div>"`;
+    const linearTailwindCode=`<div className="bg-[linear-gradient(${angles}deg,${colorPick},${colorPickEnd})]"></div>`;
 
     const [codeCopied,setCodeCopied]=useState({
         linearCopied:true,
@@ -131,7 +131,7 @@ function LinearGradients() {
                         <div>
                             <div className="angleLinear">
                                 <label>Angle:</label>
-                                <input type="range" className="angleInputRange" min="-360" max="360"
+                                <input type="range" className="angleInputRange" min="0" max="360"
                                 value={angles} onChange={angleInputHandler}/>
                                 <p className="angleLinearInput">{angles}deg</p>
                             </div>

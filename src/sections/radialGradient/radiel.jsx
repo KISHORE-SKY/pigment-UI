@@ -22,7 +22,7 @@ function RadielGradient() {
     const [radialAngle,setRadialAngle]=useState('farthest-side');
     function radialAngleHandler(event){
         setRadialAngle(event.target.value);
-        // console.log(event.target.value);
+
     }
 
     const [radialPosition,setRadialPosition]=useState('center');
@@ -152,7 +152,10 @@ function RadielGradient() {
                                     backgroundColor:'#F7F7F7',
                                     ".MuiSelect-icon":{
                                         color:'#0B0729'
-                                    }
+                                    },
+                                    "&.Mui-focused .MuiOutlinedInput-notchedOutline":{
+                                        border:"1px solid #0B0729"
+                                    },
                                 }}
                                 variant="outlined"
                                 labelId="demo-simple-select-label"
@@ -174,7 +177,10 @@ function RadielGradient() {
                                     backgroundColor:'#F7F7F7',
                                     ".MuiSelect-icon":{
                                         color:'#0B0729'
-                                    }
+                                    },
+                                    "&.Mui-focused .MuiOutlinedInput-notchedOutline":{
+                                        border:"1px solid #0B0729"
+                                    },
                                 }}
                                 variant="outlined"
                                 labelId="demo-simple-select-label"
@@ -202,7 +208,10 @@ function RadielGradient() {
                                     },
                                     "& .MuiOutlinedInput-notchedOutline":{
                                         outline:'none'
-                                    }
+                                    },
+                                     "&.Mui-focused .MuiOutlinedInput-notchedOutline":{
+                                        border:"1px solid #0B0729"
+                                    },
                                 }}
                                 variant="outlined"
                                 labelId="demo-simple-select-label"

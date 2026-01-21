@@ -31,24 +31,42 @@ function GlassMorphism() {
 
     const textColorGM=brightness > 180 ? "#000" : "#fff"
 
-const styleCodesGM=`
-.glassmorphism{
+const styleCodesGM=`.glassmorphism{
     background:${glassOFBg};
     backdrop-filter:blur(${blurRanges}px);
     -webkit-backdrop-filter:blur(${blurRanges}px);
-    border-radius:20px;
-}
-`;
+}`;
 
-    const [codeIsCopied,setCodeIsCopied]=useState(false);
-    async function codeCopyHandler() {
-        await navigator.clipboard.writeText(styleCodesGM);
-         setCodeIsCopied(pre=>pre=false);
-        setTimeout(()=>{
-            setCodeIsCopied(pre=>pre=true);
-        },700)
+const tailwindCodesGM=`<div className="bg-[${glassOFBg}] backdrop-blur-[${blurRanges}px]"></div>`
+
+    const [codeIsCopied,setCodeIsCopied]=useState({
+        morphismCss:true,
+        morphismTailwind:true
+    });
+    async function codeCopyHandler(type,text) {
+        try{
+            await navigator.clipboard.writeText(text);
+            setCodeIsCopied(prev=>({...prev,[type]:false}));
+            setTimeout(()=>{
+                setCodeIsCopied(prev=>({...prev,[type]:true}));
+            },800)
+        }
+        catch(error){
+            console.log(`couldn't copy`);
+            
+        }
     }
 
+    const [gmCssCodes,setGmCssCodes]=useState('yesOpen');
+    const [gmTailwindCodes,setGmTailwindCodes]=useState('noOpen');
+    function cssCodeHandler() {
+        setGmCssCodes('yesOpen');
+        setGmTailwindCodes('noOpen');
+    }
+    function tailwindCodeHandler() {
+        setGmTailwindCodes('yesOpen');
+        setGmCssCodes('noOpen')
+    }
 
     return(
         <>
@@ -92,16 +110,37 @@ const styleCodesGM=`
                         </div>
 
                         <div className="codesMorphism">
-                            <LuCopy 
-                              onClick={codeCopyHandler}
-                                className={!codeIsCopied ? 'notCopied' : 'codeCopied'}/>
+                            <div className="glassDivisions">
+                                <button onClick={cssCodeHandler} 
+                                className={gmCssCodes==='yesOpen' ? "glassDivisionClicked" : "glassDivisionsbutton"}>CSS</button>
+                                <button onClick={tailwindCodeHandler} 
+                                className={gmTailwindCodes==='yesOpen' ? "glassDivisionClicked" : "glassDivisionsbutton"}>Tailwind Css</button>
+                            </div>
+                            {gmCssCodes==='yesOpen' && <div>
+                            <div className="copyMessageSection">
+                                {codeIsCopied.morphismCss ? <LuCopy 
+                                onClick={()=>{codeCopyHandler('morphismCss',styleCodesGM)}}
+                                className='notCopied'/> :
+                                <p className="codeCopied">Copied</p>}
+                            </div>
                             <pre>
                                 {styleCodesGM}
                             </pre>
-                              
+                            </div>}
+                            {gmTailwindCodes==='yesOpen' && <div>
+                            <div className="copyMessageSection">
+                                {codeIsCopied.morphismTailwind ? <LuCopy 
+                                onClick={()=>{codeCopyHandler('morphismTailwind',tailwindCodesGM)}}
+                                className= 'notCopied'/> :
+                                <p className="codeCopied">Copied</p>}
+                            </div>
+                            <pre>
+                                {tailwindCodesGM}
+                            </pre>
+                            </div>}
                         </div>
-                        
-                    </div>
+
+                        </div>
 
                     <div className="morphismCustomize">
                         <div className="gmColorInput">
@@ -113,7 +152,7 @@ const styleCodesGM=`
                             </div>
 
                             <div>  
-                                <label className="glassLabels">Picked color HEX :</label>
+                                <label className="glassLabels">HEX:</label>
                                 <HexColorInput color={pickColor} 
                                 onChange={setPickColor} 
                                 readOnly prefixed 
@@ -121,13 +160,13 @@ const styleCodesGM=`
                             </div>
 
                             <div>
-                                <label className="glassLabels">IN RGBA:</label>
+                                <label className="glassLabels">RGBA:</label>
                                 <p className="rgbaDisplayInput">{rgbamorphism.r},{rgbamorphism.g},{rgbamorphism.b},{rgbamorphism.a}</p>
                             </div>
                         </div>
 
                         <div className="opacitySection">
-                            <label className="glassLabels">Alpha:</label>
+                            <label className="glassLabels">Opacity:</label>
 
                             <div>
                                 <input type="range" min="0"

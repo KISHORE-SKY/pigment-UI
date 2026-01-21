@@ -62,26 +62,67 @@
     font-size: 15px;
     color: var(--LightBgColor);
     margin: 15px 0px 0px 0px;
-    padding: 10px;
+    padding: 0px 10px 10px 0px;
     border-radius: 6px;
     background-color: var(--darkTextColor);
 
 }
 .codesMorphism pre{
-    text-wrap: wrap;
     word-spacing: normal;
+    overflow: auto;
+    height: 170px;
+    padding: 10px;
+}
+.copyMessageSection{
+    height: 20px;
 }
 .codeCopied{
-    color: #13f030;
-    cursor: pointer;
-    font-size: 18px;
+    color: #0B0729;
+    background-color: var(--primaryBgcards);
+    padding: 2px;
+    border-radius: 5px;
+    margin: 0px 5px;
+    font-size: 15px;
+    width: fit-content;
+    margin-left: 10px;
   
 }
 .notCopied{
     color: var(--LightBgColor);
     cursor: pointer;
-    font-size: 18px;
+    font-size: 15px;
+     margin:5px 0px 0px 10px;
    
+}
+.glassDivisions{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.glassDivisionsbutton{
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--LightBgColor);
+    margin-bottom: 5px;
+}
+.glassDivisionsbutton:hover{
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+.glassDivisionClicked{
+    background-color: var(--primaryBgcards);
+    opacity: 1;
+    border: none;
+    outline: none;
+    color: var(--LightBgColor);
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .morphismCustomize{
     display: flex;

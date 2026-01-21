@@ -44,17 +44,17 @@
 
 .previewShadowCode{
     margin-top: 9px;
-}
-.shadowCodes{
     background-color: var(--darkColor);
     color: var(--primaryTextColor);
     font-size: 15px;
-    padding: 15px;
-    height: 140px;
+    padding: 0px 10px 10px 0px;
 }
-.shadowCodes p{
-    text-wrap: wrap;
+.shadowCodes{
+    padding: 10px;
+    height: 160px;
+    overflow: auto;
 }
+
 .boxShadowRanges{
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@
 }
 .boxShadowRanges input{
     width: 230px;
-      cursor: ew-resize;
+    cursor: ew-resize;
     accent-color: var(--LightBgColor);
 }
 .boxShadowColorPicker{
@@ -112,7 +112,7 @@
 .rangeInput{
     width: 230px;
     outline: none;
-      cursor: ew-resize;
+    cursor: ew-resize;
     accent-color: var(--LightBgColor);
 
 }
@@ -123,18 +123,54 @@
 }
 
 .codesCopied{
-    color: #0ad907;
-    margin: 8px 8px 2px 8px;
-    align-self: flex-start;
-    font-size: 18px;
+    color: #0B0729;
+    background-color: var(--primaryBgcards);
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 15px;
+    width: fit-content;
+    
 }
 .codesdidntCopied{
     color: var(--primaryTextColor);
-    margin: 8px 8px 2px 8px;
     align-self: flex-start;
-    font-size: 18px;
+    font-size: 15px;
+    cursor: pointer;
 }
-
+.codecopymessageSection{
+    height: 20px;
+    margin: 5px 0px 0px 5px;
+}
+.boxDivisions{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.boxDivisionsbutton{
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--LightBgColor);
+    margin-bottom: 5px;
+}
+.boxDivisionsbutton:hover{
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+.boxDivisionClicked{
+    background-color: var(--primaryBgcards);
+    opacity: 1;
+    border: none;
+    outline: none;
+    color: var(--LightBgColor);
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 @media (max-width:1178px){
 .wholeShadow{

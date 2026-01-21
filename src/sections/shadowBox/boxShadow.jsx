@@ -40,15 +40,38 @@ function BoxShadow() {
 const shadowCodePreview =`.box-Shadow-code{
     -webkit-box-shadow:${inputsRanges}px ${yOffsetRange}px ${spreadRanges}px ${shadowBlur}px ${shodowColor};
     box-shadow:${inputsRanges}px ${yOffsetRange}px ${spreadRanges}px ${shadowBlur}px ${shodowColor};
-}`
+}`;
 
-    const [shadowCopied,setShadowCopied]=useState(false);
-    async function boxShadowCodeCopy() {
-        await navigator.clipboard.writeText(shadowCodePreview);
-        setShadowCopied(prev=>prev=false);
-        setTimeout(()=>{
-            setShadowCopied(prev=>prev=true);
-        },700)
+const convertedShadowCodes=boxShadowContainer.replaceAll(" ","_")
+const shadowTailwindCodes=`<div className="shadow-[${convertedShadowCodes}]"></div>`;
+
+    const [shadowCopied,setShadowCopied]=useState({
+        shadowCss:true,
+        shadowTailwind:true
+    });
+
+    async function boxShadowCodeCopy(type,text) {
+        try{
+            await navigator.clipboard.writeText(text);
+            setShadowCopied(prev=>({...prev,[type]:false}));
+            setTimeout(()=>{
+                setShadowCopied(prev=>({...prev,[type]:true}));
+            },800)
+        }
+        catch(error){
+            console.log(`couldn't copy`);
+        }
+    }
+    const [shadowCssOpen,setShadowCssOpen]=useState('yesOpen');
+    const [shadowTailwindOpen,setShadowTailwindOpen]=useState('notOpen');
+
+    function shadowCssCodeHandler(){
+        setShadowCssOpen('yesOpen');
+        setShadowTailwindOpen('notOpen');
+    }
+    function shadowTailwindCodeHandler(){
+        setShadowTailwindOpen('yesOpen');
+        setShadowCssOpen('notOpen');
     }
     return(
         <>
@@ -58,16 +81,39 @@ const shadowCodePreview =`.box-Shadow-code{
                 </div>
                 <section className="boxShadowMain">
                     <div className="shadowPreview">
-                        <h2 className="titleShadow">Box-Shadow Picker</h2>
+                        <h2 className="titleShadow">Box-Shadow</h2>
                         <div className="previewBox" style={{boxShadow:boxShadowContainer}}>
                             <p>Box-Shadow</p>
                         </div>
                         <div className="previewShadowCode">
-                            <LuCopy onClick={boxShadowCodeCopy}
-                            className={!shadowCopied ? "codesdidntCopied" : "codesCopied"}/>
-                            <pre className="shadowCodes">
-                                <p>{shadowCodePreview}</p>
-                            </pre>
+                            <div className="boxDivisions">
+                                <button className={shadowCssOpen === 'yesOpen' ? "boxDivisionClicked" : "boxDivisionsbutton"}
+                                onClick={shadowCssCodeHandler}>CSS</button>
+                                <button className={shadowTailwindOpen==='yesOpen' ? "boxDivisionClicked" : "boxDivisionsbutton"}
+                                onClick={shadowTailwindCodeHandler}>Tailwind Css</button>
+                            </div>
+
+                            {shadowCssOpen ==='yesOpen' && <div>
+                                <div className="codecopymessageSection">
+                                    {shadowCopied.shadowCss ? <LuCopy onClick={()=>{boxShadowCodeCopy('shadowCss',shadowCodePreview)}}
+                                    className="codesdidntCopied"/> :
+                                    <p className="codesCopied">Copied</p>}
+                                </div>
+                                    <pre className="shadowCodes">
+                                        <p>{shadowCodePreview}</p>
+                                    </pre>
+                            </div>}
+
+                            {shadowTailwindOpen==='yesOpen' && <div>
+                                <div className="codecopymessageSection">
+                                    {shadowCopied.shadowTailwind ? <LuCopy onClick={()=>{boxShadowCodeCopy('shadowTailwind',shadowTailwindCodes)}}
+                                    className="codesdidntCopied"/> :
+                                    <p className="codesCopied">Copied</p>}
+                                </div>
+                                <pre className="shadowCodes">
+                                    <p>{shadowTailwindCodes}</p>
+                                </pre>
+                            </div>}
                         </div>
                     </div>
 
@@ -123,5 +169,3 @@ const shadowCodePreview =`.box-Shadow-code{
 }
 
 export default BoxShadow;
-
-
