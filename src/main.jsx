@@ -8,12 +8,13 @@ import Layout from "./layout";
 import HomeSection from "./sections/home/heroSection";
 import ColorPicker from "./sections/colorPicker/color";
 import GlassMorphism from "./sections/glassEffect/glassbg";
-import Buttons from "./sections/buttonSection/button"
-import BoxShadow from "./sections/shadowBox/boxShadow"
-import LinearGradients from "./sections/linearGradientSection/linearGradient"
-import RadielGradient from "./sections/radialGradient/radiel"
-import FormComponents from "./sections/formsSection/formui"
-import ErrorElemet from "./sections/errorPage/errors"
+import Buttons from "./sections/buttonSection/button";
+import BoxShadow from "./sections/shadowBox/boxShadow";
+import LinearGradients from "./sections/linearGradientSection/linearGradient";
+import RadielGradient from "./sections/radialGradient/radiel";
+import FormComponents from "./sections/formsSection/formui";
+import ErrorElemet from "./sections/errorPage/errors";
+import ThemeContainer from "./themeContent.jsx";
 
 const rountingSections = createBrowserRouter([
   {
@@ -59,6 +60,8 @@ const rountingSections = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={rountingSections} />
+    <ThemeContainer>
+      <RouterProvider router={rountingSections} />
+    </ThemeContainer>
   </StrictMode>
 );

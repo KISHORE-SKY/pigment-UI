@@ -1,10 +1,12 @@
-:root{
-    --LightBgColor:#0B0729;
-    --darkTextColor:#fff;
-    --primaryBgcards:#F7F7F7;
-    --secondarytextColor:rgb(35, 34, 92);
-}
 
+/* :root{
+    --lightBgColor:#F7F7F7;
+    --primaryTextColor:#0B0729;
+    --secondaryTextColor:rgb(35, 34, 92);
+    --darkColor:#fff;
+    --navFootBg:#0B0729;
+    --navFootText:#fff;
+} */
 .glassWholeSection{
     display: grid;
     grid-template-columns: minmax(250px,275px) minmax(350px,1fr);
@@ -18,7 +20,7 @@
     gap: 50px;
 }
 .previewCode{
-    background-color: var(--primaryBgcards);
+    background-color: var(--lightBgColor);
     padding: 15px;
     border-radius: 10px;
 }
@@ -52,7 +54,7 @@
     outline: none;
     width: 275px;
     cursor: ew-resize;
-    accent-color: var(--LightBgColor);
+    accent-color: var(--primaryTextColor);
 }
 .codesMorphism {
     text-align: left;
@@ -60,11 +62,11 @@
     flex-direction: column;
     justify-content: flex-start;
     font-size: 15px;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin: 15px 0px 0px 0px;
     padding: 0px 10px 10px 0px;
     border-radius: 6px;
-    background-color: var(--darkTextColor);
+    background-color: var(--darkColor);
 
 }
 .codesMorphism pre{
@@ -77,8 +79,8 @@
     height: 20px;
 }
 .codeCopied{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     padding: 2px;
     border-radius: 5px;
     margin: 0px 5px;
@@ -88,7 +90,7 @@
   
 }
 .notCopied{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     cursor: pointer;
     font-size: 15px;
      margin:5px 0px 0px 10px;
@@ -105,7 +107,7 @@
     padding: 5px;
     border-radius: 5px;
     background-color: transparent;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
 }
 .glassDivisionsbutton:hover{
@@ -114,11 +116,11 @@
     transition: all 0.1s ease-in;
 }
 .glassDivisionClicked{
-    background-color: var(--primaryBgcards);
+    background-color: var(--lightBgColor);
     opacity: 1;
     border: none;
     outline: none;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
@@ -152,7 +154,7 @@
     cursor: grab;
 } 
 .glassLabels{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     font-size: 17px;
     margin-bottom: 3px;
     display: block;
@@ -167,8 +169,8 @@
 }
 .hexDisplayInput{
     border: none;
-    background-color: var(--primaryBgcards);
-    color: var(--LightBgColor);
+    background-color: var(--lightBgColor);
+    color: var(--primaryTextColor);
     height: 40px;
     width: 275px;
     font-size: 16px;
@@ -177,8 +179,8 @@
     outline: none;
 }
 .rgbaDisplayInput{
-    background-color: var(--primaryBgcards);
-    color: var(--LightBgColor);
+    background-color: var(--lightBgColor);
+    color: var(--primaryTextColor);
     border-radius: 10px;
     width: 275px;
     padding: 10px;
@@ -195,7 +197,7 @@
     grid-template-columns: minmax(300px,500px);
    }
    .codesMorphism{
-       background-color: var(--darkTextColor);
+       background-color: var(--darkColor);
    }
    .morphismCustomize{
     align-items: center;
@@ -235,7 +237,7 @@
     padding: 10px;
 }
 .codesMorphism{
-       background-color: var(--darkTextColor);
+       background-color: var(--darkColor);
    }
    .previewBackground{
     padding: 15px;
@@ -272,7 +274,7 @@
     text-wrap: wrap;
    }
    .codesMorphism{
-       background-color: var(--darkTextColor);
+       background-color: var(--darkColor);
    }
 }
 
@@ -300,7 +302,7 @@
     width: 275px;
     }
     .codesMorphism{
-       background-color: var(--darkTextColor);
+       background-color: var(--darkColor);
    }
 
 }

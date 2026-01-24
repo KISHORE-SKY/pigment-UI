@@ -1,9 +1,11 @@
-:root{
-    --LightBgColor:#0B0729;
-    --darkTextColor:#fff;
-    --primaryBgcards:#F7F7F7;
-    --secondarytextColor:rgb(35, 34, 92);
-}
+/* :root{
+    --lightBgColor:#F7F7F7;
+    --primaryTextColor:#0B0729;
+    --secondaryTextColor:rgb(35, 34, 92);
+    --darkColor:#fff;
+    --navFootBg:#0B0729;
+    --navFootText:#fff;
+} */
 main{
     padding: 0px 30px;
     display: grid;
@@ -12,8 +14,8 @@ main{
     align-content: center;
     gap: 10px;
     height: 100vh;
-    background-color: var(--primaryBgcards);
-    color: var(--LightBgColor);
+    background-color: var(--darkColor);
+    color: var(--primaryTextColor);
 }
 .aboutSection{
     display: flex;
@@ -24,36 +26,36 @@ main{
     padding: 15px;
 }
 .title{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     font-size: 32px;
 }
 .homeDescription p{
-    color: rgb(35, 34, 92);
+    color: var(--primaryTextColor);
     font-size: 18px;
 }
 .exploreButton{
     display: flex;
     align-items: center;
     gap: 9px;
-    background-color: var(--LightBgColor);
-    color: #fff;
+    background-color: var(--primaryTextColor);
+    color: var(--darkColor);
     padding: 9px;
     border-radius: 20px;
     cursor: pointer;
 }
 .explore{
     border: none;
-    background-color: var(--LightBgColor);
-    color: var(--darkTextColor);
+    background-color: var(--primaryTextColor);
+    color: var(--darkColor);
     font-size: 16px;
     cursor: pointer;
 }
 .exploreLink{
     text-decoration: none;
-    color: var(--darkTextColor);
+    color: var(--darkColor);
 }
 .exploreIcons{
-    color: var(--darkTextColor);
+    color: var(--darkColor);
     font-size: 16px;
 }
 .imageSection{

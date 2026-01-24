@@ -1,9 +1,12 @@
-:root{
-    --LightBgColor:#0B0729;
-    --darkTextColor:#fff;
-    --primaryBgcards:#F7F7F7;
-    --secondarytextColor:rgb(35, 34, 92);
-}
+
+/* :root{
+    --lightBgColor:#F7F7F7;
+    --primaryTextColor:#0B0729;
+    --secondaryTextColor:rgb(35, 34, 92);
+    --darkColor:#fff;
+    --navFootBg:#0B0729;
+    --navFootText:#fff;
+} */
 
 .formMainSection{
     display: grid;
@@ -27,19 +30,19 @@
    
 }
 .formHeading{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
 }
 .loginForm{
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center; 
-    background-color: var(--primaryBgcards);
-    color: var(--LightBgColor); 
+    background-color: var(--lightBgColor);
+    color: var(--primaryTextColor); 
     padding: 20px;
     border-radius: 10px;
     width: 375px;
-     box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
+     box-shadow: 3px 3px 10px 1px var(--shadow-color);
 }
 .inputBox{
     display: flex;
@@ -53,8 +56,8 @@
     height: 35px;
     border-radius: 5px;
     padding: 9px;
-    color: var(--LightBgColor);
-    background-color: var(--darkTextColor);
+    color: var(--primaryTextColor);
+    background-color: var(--darkColor);
     display: flex;
     align-items: center;
 
@@ -63,17 +66,19 @@
     border: none;
     outline: none;
     width: 270px;
+    color: var(--primaryTextColor);
+    background-color: var(--darkColor);
 }
 .formInputs input::placeholder{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
 }
 .formButtons{
     width: 75px;
     border: none;
     outline: none;
     height: 30px;
-    background-color: var(--LightBgColor);
-    color: var(--darkTextColor);
+    background-color: var(--primaryTextColor);
+    color: var(--darkColor);
     border-radius: 5px;
     margin: 5px 0px 0px 0px;
     transition: all 0.3s ease-in-out;
@@ -86,8 +91,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: var(--primaryBgcards);
-    color: var(--LightBgColor);
+    background-color: var(--lightBgColor);
+    color: var(--primaryTextColor);
     padding: 20px;
     align-items: center;
     border-radius: 10px;
@@ -98,8 +103,8 @@
     align-self: flex-start;
     border: none;
     outline: none;
-    color: var(--darkTextColor);
-    background-color: var(--LightBgColor);
+    color: var(--darkColor);
+    background-color: var(--primaryTextColor);
     padding: 7px;
     border-radius: 4px;
     cursor: pointer;
@@ -111,8 +116,8 @@
 .loginDivisions{
     display: flex;
     flex-direction: column;
-    background-color: var(--darkTextColor);
-    color: var(--LightBgColor);
+    background-color: var(--darkColor);
+    color: var(--primaryTextColor);
     padding: 0px 10px 10px 0px;
     border-radius: 5px;
     height: 400px;
@@ -130,11 +135,12 @@
     font-size: 15px;
     border-radius: 6px;
     background-color: transparent;
+    color: var(--primaryTextColor);
     border: none;
     outline: none;
 }
 .buttonnotClicked:hover{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     opacity: 0.5;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -142,9 +148,9 @@
 .buttonClicked{
     padding: 5px;
     font-size: 15px;
-    background-color: var(--primaryBgcards);
+    background-color: var(--lightBgColor);
     border-radius: 6px;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     border: none;
     outline: none;
     cursor: pointer;
@@ -156,7 +162,7 @@
     margin-right: 50px;
 }
 .conditions input{
-    accent-color: var(--LightBgColor);
+    accent-color: var(--primaryTextColor);
     cursor: pointer;
 }
 .conditions label{
@@ -165,7 +171,7 @@
 }
 
 .formnotCopied{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     font-size: 16px;
     align-self: flex-start;
     margin: 2px 2px 0px 8px;
@@ -176,8 +182,8 @@
     height: 20px;
 }
 .codeCopied{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     padding: 2px;
     border-radius: 5px;
     margin: 0px 5px;
@@ -185,7 +191,7 @@
     width: fit-content;
 }
 .formInputsnotDone{
-    color: red;
+    color: var(--color-errors);
     height: 20px;
 }
 .loginreactpre p{
@@ -214,8 +220,8 @@
     height: 24px;
 }
 .copiedMessage p{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     font-size: 14px;
     padding: 3px;
     border-radius: 5px;

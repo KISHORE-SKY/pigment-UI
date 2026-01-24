@@ -3,6 +3,24 @@
     --primaryTextColor:#0B0729;
     --secondaryTextColor:rgb(35, 34, 92);
     --darkColor:#fff;
+    --navFootBg:#0B0729;
+    --navFootText:#fff;
+    --color-errors:red;
+    --shadow-color:rgba(0,0,0,0.3);
+    --navbar-before:#F7F7F7;
+    --button-special:#0B0729;
+    --button-text:#fff;
+}
+.dark{
+    --darkColor:#0B0729;
+    --primaryTextColor:#fff;
+    --lightBgColor:rgb(35, 34, 92);
+}
+body{
+    background-color: var(--darkColor);
+    color: var(--primaryTextColor);
+    transition: background-color 0.3s ease,color 0.3s ease;
+    margin: 0;
 }
 
 *{
@@ -13,11 +31,11 @@
 
 .linkTag{
     text-decoration: none;
-    color: #fff;
+    color: var(--navFootText);
 }
 .linkDrop{
     text-decoration: none;
-    color: #0B0729;
+    color: var(--navFootBg);
 }
 
 .navbarSection{
@@ -25,10 +43,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    color:#fff;
-    background-color: #0B0729;
+    color:var(--navFootText);
+    background-color: var(--navFootBg);
     width: 100%;
     position: relative;
+    box-shadow: 0px 0px 10px 1px var(--shadow-color);
 }
 .landscapeNavlits{
   display: flex;
@@ -57,7 +76,7 @@
     height: 1.5px;
     bottom: 0;               
     left: 0;
-    background-color: #F7F7F7;
+    background-color: var(--navbar-before);
     transition: width 0.4s ease-out; 
 }
 .navLists li:hover::before {
@@ -71,8 +90,8 @@
     height: 30px;
     border-radius: 10px;
     padding: 5px 15px; 
-    background-color: #F7F7F7;
-    color: #0B0729;
+    background-color: var(--navbar-before);
+    color: var(--navFootBg);
     cursor: pointer;
 }
 
@@ -81,8 +100,8 @@
     top: 50px;
     left: 0;
     width: 200px;
-    background-color: #F5F5F5;
-    color: #0B0729;
+    background-color: var(--navbar-before);
+    color: var(--navFootBg);
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -91,7 +110,7 @@
     text-decoration: none;
     border-radius: 10px;
     font-size: 17px;
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px 5px var(--shadow-color);
     z-index: 1000000;
 }
 .linkDrop{
@@ -108,7 +127,7 @@
     height: 1.5px;
     bottom: 0;               
     left: 0;
-    background-color: #0B0729;
+    background-color: var(--navFootBg);
     transition: width 0.4s ease-out; 
 }
 .linkDrop:hover::before {
@@ -146,10 +165,6 @@
 }
 
 @media screen and (max-width:1024px){
-    .dropDownBox,.searchBar{
-        width: 150px;
-    }
-   
     .wholeLists{
         padding-right: 10px;
         gap: 10px;
@@ -173,13 +188,13 @@
         flex-direction: column;
         position: absolute;
         right: 5px;
-        background-color: #F7F7F7;
-        color: #0B0729;
+        background-color: var(--navbar-before);
+        color: var(--navFootBg);
         top: 60px;
         padding: 15px;
         border-radius: 10px;
         z-index: 10000;
-        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 0px 10px 1px var(--shadow-color);
     }
     .navListsPotrait li{
         list-style: none;
@@ -188,7 +203,5 @@
         font-size: 20px;
     }
 }
-
-
 
 

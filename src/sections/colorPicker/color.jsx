@@ -6,7 +6,7 @@ import '../navbar/sideNav.css'
 import { IoMdColorPalette } from "react-icons/io";
 import { colord } from "colord";
 import { LuCopy } from "react-icons/lu";
-
+import  GoesTop  from "../../assets/components/top.jsx"
 
 
 function ColorPicker() {
@@ -117,7 +117,7 @@ function ColorPicker() {
                             className= 'coloredCopyInActive'/>
                             :<p className="copiedMessageColor">Copied</p>}
                             </div>
-
+                            <GoesTop />
                            <label className="hexLabel">RGBA & Opacity:</label>
                            <div className="inputsOfColor">
                            <p className="colorValueDisplay">{rgbaText}</p>
@@ -131,9 +131,8 @@ function ColorPicker() {
                                  min='0.0' max='1' value={alphaOpacity} onInput={colorOpacityAlpha}/>
                             </div>
                         </div>
-                
+                        
                     </div>
-
                 </section>
 
             </section>

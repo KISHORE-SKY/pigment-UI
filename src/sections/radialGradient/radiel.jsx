@@ -38,14 +38,15 @@ function RadielGradient() {
 
     const bgRadialGradient=`radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker})`
 
-    const radialGradientCode=`.radialBg{
-        background:-webkit-radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker});
-        background:radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker});
-    }`;
+    const radialGradientCode=`
+ .radialBg{
+    background:-webkit-radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker});
+    background:radial-gradient(${radialShape} ${radialAngle} at ${radialPosition},${radialPicker},${radialEndPicker});
+ }`;
 
     const convertedTailwindCode=bgRadialGradient.replaceAll(" ","_");
     const radialTailwindCode=`
-<div className="w-[100px] h-[75px] bg-[radial-gradient(${convertedTailwindCode},${radialPicker},${radialEndPicker})]"></div>`
+ <div className="w-[100px] h-[75px] bg-[radial-gradient(${convertedTailwindCode},${radialPicker},${radialEndPicker})]"></div>`
 
     const [radialCopied,setRadialCopied]=useState({
         radialCss:true,

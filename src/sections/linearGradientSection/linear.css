@@ -1,9 +1,9 @@
-:root{
+/* :root{
     --lightBgColor:#F7F7F7;
     --primaryTextColor:#0B0729;
     --secondaryTextColor:rgb(35, 34, 92);
     --darkColor:#fff;
-}
+} */
 
 .mainLinearSection{
     display: grid;
@@ -78,7 +78,7 @@
     outline: none;
     width: 260px;
     cursor: ew-resize;
-    accent-color: var(--LightBgColor);
+    accent-color: var(--primaryTextColor);
 }
 .angleLinearInput{
     background-color: var(--lightBgColor);
@@ -116,7 +116,7 @@ label{
     padding: 5px;
     border-radius: 5px;
     background-color: transparent;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
 }
 .linearDivisionsbutton:hover{
@@ -125,11 +125,11 @@ label{
     transition: all 0.1s ease-in;
 }
 .linearDivisionClicked{
-    background-color: var(--primaryBgcards);
+    background-color: var(--lightBgColor);
     opacity: 1;
     border: none;
     outline: none;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
@@ -147,8 +147,8 @@ label{
     cursor: pointer;
 }
 .copiedMessageLinear{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     padding: 2px;
     border-radius: 5px;
     margin: 0px 5px;

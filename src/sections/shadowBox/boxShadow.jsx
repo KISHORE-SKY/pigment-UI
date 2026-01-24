@@ -152,7 +152,7 @@ const shadowTailwindCodes=`<div className="shadow-[${convertedShadowCodes}]"></d
                                 color={colorPick} prefixed
                                 readOnly onChange={setColorPick}/>
 
-                                <label>Opacity Alpha:</label>
+                                <label>Opacity:</label>
                             
                                 <input className="rangeInput" type="range" step='0.1'
                                 min='0' max='1' value={rgbaAlpha} onInput={opacityRGBAalpha}/>

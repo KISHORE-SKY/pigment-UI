@@ -1,16 +1,16 @@
-:root{
+/* :root{
     --LightBgColor:#0B0729;
     --darkTextColor:#fff;
     --primaryBgcards:#F7F7F7;
     --secondarytextColor:rgb(35, 34, 92);
-}
+} */
 footer{
     display: grid;
     grid-template-columns: minmax(275px,325px) repeat(3,minmax(225px,250px));
     padding: 25px 20px;
     gap: 10px;
-    background-color: var(--LightBgColor);
-    color: var(--darkTextColor);
+    background-color: var(--navFootBg);
+    color: var(--navFootText);
 }
 .footerlogo{
     font-size: 30px;
@@ -29,7 +29,7 @@ footer{
     transition: all 0.2s ease-in-out;
 }
 .footerLink:hover{
-    color: rgba(255,255,255,0.7);
+    opacity: 0.6;
     cursor: pointer;
 }
 .socialMedia{
@@ -39,7 +39,7 @@ footer{
 }
 .footerLink{
     text-decoration: none;
-    color: #fff;
+    color: var(--navFootText);
 }
 
 @media (max-width:1024px) and (min-width:768px){

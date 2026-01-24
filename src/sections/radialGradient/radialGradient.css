@@ -1,9 +1,9 @@
-:root{
+/* :root{
     --lightBgColor:#F7F7F7;
     --primaryTextColor:#0B0729;
     --secondaryTextColor:rgb(35, 34, 92);
     --darkColor:#fff;
-}
+} */
 
 .wholeRadialSection{
     display: grid;
@@ -142,7 +142,7 @@ select option:checked{
     padding: 5px;
     border-radius: 5px;
     background-color: transparent;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
 }
 .radialDivisionsbutton:hover{
@@ -151,19 +151,19 @@ select option:checked{
     transition: all 0.1s ease-in;
 }
 .radialDivisionClicked{
-    background-color: var(--primaryBgcards);
+    background-color: var(--lightBgColor);
     opacity: 1;
     border: none;
     outline: none;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
 }
 .copiedMessageradial{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     padding: 2px;
     border-radius: 5px;
     margin: 0px 5px;
@@ -174,9 +174,12 @@ select option:checked{
     height: 20px;
 }
 .css-18jp67o-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-18jp67o-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-18jp67o-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
-    padding: 9px 9px;
+    padding: 7px 7px;
     outline: none;
     font-size: 17px;
+    background-color: var(--lightBgColor);
+    color: var(--primaryTextColor);
+    border-radius: 3px;    
 }
 @media (max-width:1179px){
 .mainradialSection{

@@ -1,9 +1,9 @@
-:root{
+/* :root{
     --lightBgColor:#F7F7F7;
     --primaryTextColor:#0B0729;
     --secondaryTextColor:rgb(35, 34, 92);
     --darkColor:#fff;
-}
+} */
 
 .wholeShadow{
     display: grid;
@@ -64,7 +64,7 @@
 .boxShadowRanges input{
     width: 230px;
     cursor: ew-resize;
-    accent-color: var(--LightBgColor);
+    accent-color: var(--primaryTextColor);
 }
 .boxShadowColorPicker{
     display: flex;
@@ -113,7 +113,7 @@
     width: 230px;
     outline: none;
     cursor: ew-resize;
-    accent-color: var(--LightBgColor);
+    accent-color: var(--primaryTextColor);
 
 }
 .shadowLables{
@@ -123,8 +123,8 @@
 }
 
 .codesCopied{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     padding: 2px;
     border-radius: 5px;
     font-size: 15px;
@@ -152,7 +152,7 @@
     padding: 5px;
     border-radius: 5px;
     background-color: transparent;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
 }
 .boxDivisionsbutton:hover{
@@ -161,11 +161,11 @@
     transition: all 0.1s ease-in;
 }
 .boxDivisionClicked{
-    background-color: var(--primaryBgcards);
+    background-color: var(--lightBgColor);
     opacity: 1;
     border: none;
     outline: none;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;

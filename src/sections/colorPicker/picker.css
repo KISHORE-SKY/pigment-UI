@@ -1,9 +1,9 @@
-:root{
+/* :root{
     --lightBgColor:#F7F7F7;
     --primaryTextColor:#0B0729;
     --secondaryTextColor:rgb(35, 34, 92);
     --darkColor:#fff;
-}
+} */
 
 .colorPickSection{
     color: var(--primaryTextColor);
@@ -103,20 +103,18 @@
 .sloganOfPicker{
     padding: 15px 0px;
 }
-.sloganOfPicker p{
+/* .sloganOfPicker p{
     font-size: 18px;
     color: gray;
-}
+} */
 .inputsOfColor{
     display: flex;
     align-items: center;
     gap: 3px;
 }
-.coloredCopy{
-    color:#05852a;
-}
+
 .coloredCopyInActive{
-    color:#0B0729;
+    color:var(--primaryTextColor);
     cursor: pointer;
 }
 .opacityColorBox{
@@ -126,8 +124,8 @@
     margin: 5px 20px 5px 5px;
 }
 .copiedMessageColor{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     font-size: 14px;
     padding: 3px;
     border-radius: 5px;

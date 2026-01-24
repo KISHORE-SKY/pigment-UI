@@ -5,6 +5,7 @@ import { CgMenuRight } from "react-icons/cg";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import OutsideClickHandler from 'react-outside-click-handler';
+import { useTheme } from "../../themeContent.jsx";
 
 
 function Navbar() {
@@ -14,6 +15,8 @@ function Navbar() {
     function onOutsideClick(){
         setOutsideClickHamberg(true);
     }
+
+    const {isDarkMode,toggleTheme}=useTheme();
     
     const catogiriesMenu=useRef(null);
 
@@ -75,9 +78,9 @@ function Navbar() {
                             <li><Link to='/color' className="linkTag">Explore Tools</Link></li>  
                         </ul>
                         
-                        <div style={{display:'flex',alignItems:'center',gap:'7px'}}>
-                            <MdLightMode style={{fontSize:'20px',cursor:'pointer'}}/>  
-                            <FaMoon style={{fontSize:'18px',cursor:'pointer'}}/>
+                        <div style={{display:'flex',alignItems:'center',gap:'7px',width:'25px'}} onClick={toggleTheme} >
+                            {isDarkMode ?<MdLightMode style={{fontSize:'20px',cursor:'pointer' }}/> :
+                            <FaMoon style={{fontSize:'18px',cursor:'pointer'}}/>}
                         </div>
                     </nav>
 
@@ -100,9 +103,9 @@ function Navbar() {
                             <li><Link to="/formui" className="linkDrop">Forms</Link></li>
                         </ul>
                         
-                        <div style={{display:'flex',alignItems:'center',gap:'7px'}}>
-                            <MdLightMode style={{fontSize:'20px',cursor:'pointer'}}/>  
-                            <FaMoon style={{fontSize:'18px',cursor:'pointer'}}/>
+                        <div style={{display:'flex',alignItems:'center',gap:'7px'}} onClick={toggleTheme}>
+                            {isDarkMode ? <MdLightMode style={{fontSize:'20px',cursor:'pointer'}}/> : 
+                            <FaMoon style={{fontSize:'18px',cursor:'pointer'}}/>}
                         </div>
                     </nav>
                 )}

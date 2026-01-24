@@ -1,9 +1,15 @@
-:root{
-    --LightBgColor:#0B0729;
-    --darkTextColor:#fff;
-    --primaryBgcards:#F7F7F7;
-    --secondarytextColor:rgb(35, 34, 92);
-}
+/* :root{
+    --lightBgColor:#F7F7F7;
+    --primaryTextColor:#0B0729;
+    --secondaryTextColor:rgb(35, 34, 92);
+    --darkColor:#fff;
+    --navFootBg:#0B0729;
+    --navFootText:#fff;
+    --color-errors:red;
+    --shadow-color:rgba(0,0,0,0.3);
+    --navbar-before:#F7F7F7;
+    
+} */
 
 .buttonMainSection{
     display: grid;
@@ -16,7 +22,7 @@
 }
 .customButton{
     text-align: center;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
 }
 .colorAndButtons{
     display: grid;
@@ -31,7 +37,7 @@
     gap: 0px;
 }
 .pickerHeading{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin: 0px 0px 10px 10px;
     font-size: 17px;
 }
@@ -64,8 +70,8 @@
 .displayInput{
     width: 265px;
     height: 40px;
-    background-color: var(--primaryBgcards);
-    color: var(--LightBgColor);
+    background-color: var(--lightBgColor);
+    color: var(--primaryTextColor);
     border-radius: 7px;
     padding-inline: 10px;
     outline: none;
@@ -81,8 +87,8 @@
 }
 
 .buttonSections{
-    background-color: var(--primaryBgcards);
-    color: var(--LightBgColor);
+    background-color: var(--lightBgColor);
+    color: var(--primaryTextColor);
     border-radius: 8px;
     padding: 10px;
     display: flex;
@@ -100,8 +106,8 @@
 .slick-next {
   width: 36px;
   height: 36px;
-  background: var(--LightBgColor);
-  color: var(--darkTextColor);
+  background: var(--primaryTextColor);
+  color: var(--darkColor);
   border-radius: 10px;
   width: fit-content;
   padding: 0px 5px 0px 5px;
@@ -145,8 +151,8 @@
     transition: all 0.3s ease-out;  
 }
 .errorButton{
-    border: 2px solid red;
-    color: red;
+    border: 2px solid var(--color-errors);
+    color: var(--color-errors);
     width: 100px;
     height: 35px;
     align-self: center;
@@ -163,9 +169,9 @@
     width: 90px;
     height: 30px;
     align-self: center;
-    background-color: var(--LightBgColor);
+    background-color: var(--button-special);
     border: none;
-    color: var(--darkTextColor);
+    color: var(--button-text);
     border-radius: 5px; 
     text-align: center;
     margin: 20px 11px 11px 11px;
@@ -196,7 +202,7 @@
     gap: 14px;
 }
 .buttonPreviewCode{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     border-radius: 9px;
     padding: 10px;
     font-size: 15px;
@@ -207,8 +213,8 @@
     display: flex;
     flex-direction: column;
     gap: 0px;
-    background-color: var(--darkTextColor);
-    color: var(--LightBgColor);
+    background-color: var(--darkColor);
+    color: var(--primaryTextColor);
     margin-top: 25px;
     padding: 0px 6px 6px 0px;
     border-radius: 7px;
@@ -228,7 +234,7 @@
     padding: 5px;
     border-radius: 5px;
     background-color: transparent;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
 }
 .buttonDivisionsbutton:hover{
@@ -237,18 +243,18 @@
     transition: all 0.1s ease-in;
 }
 .buttonDivisionClicked{
-    background-color: var(--primaryBgcards);
+    background-color: var(--lightBgColor);
     opacity: 1;
     border: none;
     outline: none;
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
 }
 .copyInActive{
-    color: var(--LightBgColor);
+    color: var(--primaryTextColor);
     margin: 5px 5px 0px 9px;
     cursor: pointer;
     font-size: 16px;
@@ -262,8 +268,8 @@
     z-index: 10;
 }
 .previousButton,.nextButton{
-    background-color: var(--LightBgColor);
-    color: var(--darkTextColor);
+    background-color: var(--primaryTextColor);
+    color: var(--darkColor);
     cursor: pointer;
     padding: 7px;
     border: none;
@@ -272,8 +278,8 @@
     outline: none;
 }
 .copiedMessagebutton{
-    color: #0B0729;
-    background-color: var(--primaryBgcards);
+    color: var(--primaryTextColor);
+    background-color: var(--lightBgColor);
     padding: 2px;
     border-radius: 5px;
     margin: 0px 5px 0px 9px;
