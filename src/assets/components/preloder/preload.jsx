@@ -1,34 +1,13 @@
-{/* <div class="spinner"></div>
+import "./loader.css";
 
-<style>
-.spinner {
-   width: 56px;
-   height: 56px;
-   display: grid;
-   border: 4.5px solid #0000;
-   border-radius: 50%;
-   border-right-color: #090926;
-   animation: spinner-a4dj62 1s infinite linear;
+function PreloadComponent() {
+   return(
+      <>
+         <section className="loaderMainSection">
+             <div className="spinner"></div>
+         </section>
+      </>
+   );
 }
 
-.spinner::before,
-.spinner::after {
-   content: "";
-   grid-area: 1/1;
-   margin: 2.2px;
-   border: inherit;
-   border-radius: 50%;
-   animation: spinner-a4dj62 2s infinite;
-}
-
-.spinner::after {
-   margin: 8.9px;
-   animation-duration: 3s;
-}
-
-@keyframes spinner-a4dj62 {
-   100% {
-      transform: rotate(1turn);
-   }
-}
-</style> */}
+export default PreloadComponent;
