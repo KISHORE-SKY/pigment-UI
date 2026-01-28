@@ -12,7 +12,7 @@ function BoxShadow() {
     const [inputsRanges,setInputRanges]=useState(5);
     const [yOffsetRange,setyOffsetRange]=useState(5);
     const [spreadRanges,setSpreadRanges]=useState(1);
-    const [colorPick,setColorPick]=useState("#00022c");
+    const [colorPick,setColorPick]=useState("#1ce7f1");
     const [shadowBlur,setShadowBlur]=useState(5);
 
     function xOffsetHandler(event) {
@@ -151,10 +151,9 @@ const shadowTailwindCodes=`<div className="shadow-[${convertedShadowCodes}]"></d
                                 <label className="shadowLables">Hex:</label>
                                 <HexColorInput className="colorDisplayInput" 
                                 color={colorPick} prefixed
-                                readOnly onChange={setColorPick}/>
+                                onChange={setColorPick}/>
 
                                 <label>Opacity:</label>
-                            
                                 <input className="rangeInput" type="range" step='0.1'
                                 min='0' max='1' value={rgbaAlpha} onInput={opacityRGBAalpha}/>
                                 <p className="colorDisplayInput">{rgbaAlpha}</p>

@@ -156,7 +156,7 @@ const tailwindCodesGM=`<div className="bg-[${glassOFBg}] backdrop-blur-[${blurRa
                                 <label className="glassLabels">HEX:</label>
                                 <HexColorInput color={pickColor} 
                                 onChange={setPickColor} 
-                                readOnly prefixed 
+                                prefixed 
                                 className="hexDisplayInput"/>
                             </div>
 

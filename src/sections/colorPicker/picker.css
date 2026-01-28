@@ -37,15 +37,14 @@
     outline: none;
     padding-inline: 10px;
     font-size: 17px;
-    cursor: pointer;
 }
 .colorValueDisplay{
     background-color: var(--lightBgColor);
     color: var(--primaryTextColor);
     border-radius: 10px;
-    cursor: pointer;
     padding: 10px;
     width: 225px;
+    cursor:'context-menu';
 }
 .colorRange{
     width: 225px;
@@ -110,6 +109,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: context-menu;
 }
 
 .coloredCopyInActive{

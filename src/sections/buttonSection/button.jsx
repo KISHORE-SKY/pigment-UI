@@ -258,13 +258,13 @@ const hoverHtmlCss=`
                                 <label className="pickerHeading">Background Color:</label>
                                 <HexColorPicker className="picker" onChange={setBackgroundPicker} color={backgroudPicker}/>
                                 <HexColorInput onChange={setBackgroundPicker}
-                                 color={backgroudPicker} prefixed readOnly
+                                 color={backgroudPicker} prefixed
                                  className="displayInput"/>
                             </div>
                             <div className="textColorPick">
                                 <label className="pickerHeading">Text Color:</label>
                                 <HexColorPicker className="picker" color={textColor} onChange={setTextColor}/>
-                                <HexColorInput prefixed readOnly color={textColor}
+                                <HexColorInput prefixed color={textColor}
                                  onChange={setTextColor} className="displayInput"/>
                             </div>
                             

@@ -142,7 +142,7 @@ function LinearGradients() {
 
                                  <label>Initial Hex:</label>
                                 <HexColorInput className="colorLinearInput" color={colorPick} onChange={setColorPick}
-                                prefixed readOnly/>
+                                prefixed />
 
                                 <label>Initial RGB:</label>
                                 <div className="linearRgbCopy">
@@ -164,7 +164,7 @@ function LinearGradients() {
 
                         <label>End HEX:</label>
                         <HexColorInput className="colorLinearInput" color={colorPickEnd} onChange={setColorPickEnd}
-                        prefixed readOnly/>
+                        prefixed />
                          
                         <label>End RGB:</label>
                         <div className="linearRgbCopy">

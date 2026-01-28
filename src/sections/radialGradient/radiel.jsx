@@ -165,8 +165,14 @@ function RadielGradient() {
                                 id="demo-simple-select"
                                 value={radialShape}
                                 onChange={radialShapeHandler}>
-                                    <MenuItem value={"ellipse"}>ellipse</MenuItem>
-                                    <MenuItem value={'circle'}>circle</MenuItem>
+                                    <MenuItem value={"ellipse"} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>ellipse</MenuItem>
+                                    <MenuItem value={'circle'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>circle</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -190,10 +196,22 @@ function RadielGradient() {
                                 id="demo-simple-select"
                                 value={radialAngle}
                                 onChange={radialAngleHandler}>
-                                    <MenuItem value={'farthest-side'}>farthest-side</MenuItem>
-                                    <MenuItem value={'closest-side'}>closest-side</MenuItem>
-                                    <MenuItem value={'closest-corner'}>closest-corner</MenuItem>
-                                    <MenuItem value={'farthest-corner'}>farthest-corner</MenuItem>
+                                    <MenuItem value={'farthest-side'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>farthest-side</MenuItem>
+                                    <MenuItem value={'closest-side'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>closest-side</MenuItem>
+                                    <MenuItem value={'closest-corner'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>closest-corner</MenuItem>
+                                    <MenuItem value={'farthest-corner'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>farthest-corner</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -201,7 +219,7 @@ function RadielGradient() {
 
                     <div className="anglesRadial">
                         <label>Position:</label>
-                        <Box sx={{ minWidth: 120 }}>
+                        <Box sx={{ minWidth: 120,}}>
                             <FormControl fullWidth>
                                 {/* <InputLabel id="demo-simple-select-label">Position:</InputLabel> */}
                                 <Select sx={{color:'#0B0729', 
@@ -215,21 +233,51 @@ function RadielGradient() {
                                      "&.Mui-focused .MuiOutlinedInput-notchedOutline":{
                                         border:"1px solid #0B0729"
                                     },
+                                    "&.Mui-selected":{
+                                        backgroundColor:'#0B0729'
+                                    }
                                 }}
                                 variant="outlined"
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 value={radialPosition}
                                 onChange={radialPositionHandler}>
-                                    <MenuItem value={"center"}>center</MenuItem>
-                                    <MenuItem value={'top'}>top</MenuItem>
-                                    <MenuItem value={'bottom'}>bottom</MenuItem>
-                                    <MenuItem value={'left'}>left</MenuItem>
-                                    <MenuItem value={'right'}>right</MenuItem>
-                                    <MenuItem value={'top left'}>top left</MenuItem>
-                                    <MenuItem value={'top right'}>top right</MenuItem>
-                                    <MenuItem value={'bottom left'}>bottom left</MenuItem>
-                                    <MenuItem value={'bottom right'}>bottom right</MenuItem>
+                                    <MenuItem value={"center"} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>center</MenuItem>
+                                    <MenuItem value={'top'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>top</MenuItem>
+                                    <MenuItem value={'bottom'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>bottom</MenuItem>
+                                    <MenuItem value={'left'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>left</MenuItem>
+                                    <MenuItem value={'right'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>right</MenuItem>
+                                    <MenuItem value={'top left'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>top left</MenuItem>
+                                    <MenuItem value={'top right'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>top right</MenuItem>
+                                    <MenuItem value={'bottom left'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>bottom left</MenuItem>
+                                    <MenuItem value={'bottom right'} sx={{'&.Mui-selected':{
+                                        backgroundColor:'rgb(35, 34, 92)',
+                                        color:'#fff'
+                                    }}}>bottom right</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -241,7 +289,7 @@ function RadielGradient() {
                         
                         <label>Initial HEX:</label>
                         <HexColorInput className="colorDisplayRadial" 
-                        color={radialPicker} onChange={setRadialPicker}prefixed readOnly/>
+                        color={radialPicker} onChange={setRadialPicker} prefixed/>
 
                         <label>Initial RGB:</label>
                         <div className="radialRGBcopy">
@@ -260,7 +308,7 @@ function RadielGradient() {
 
                     <label>End HEX:</label>
                     <HexColorInput className="colorDisplayRadial"
-                    color={radialEndPicker} onChange={setRadialEndPicker} prefixed readOnly/>
+                    color={radialEndPicker} onChange={setRadialEndPicker} prefixed />
 
                     <label>End RGB:</label>
                     <div className="radialRGBcopy">

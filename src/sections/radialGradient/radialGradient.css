@@ -181,6 +181,7 @@ select option:checked{
     color: var(--primaryTextColor);
     border-radius: 3px;    
 }
+
 @media (max-width:1179px){
 .mainradialSection{
     grid-template-columns: minmax(225px,300px) minmax(225px,285px);
