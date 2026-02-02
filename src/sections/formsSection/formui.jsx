@@ -1,11 +1,11 @@
 import "./forms.css"
 import SideBar from ".././navbar/sidebar"
 import { useState } from "react";
-import { LuCopy } from "react-icons/lu";
 import { IoEyeSharp } from "react-icons/io5";
 import { RiUserFill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
-import  GoesTop  from "../../assets/components/topButton/top.jsx"
+import  GoesTop  from "../../assets/components/topButton/top.jsx";
+import { LuCopy } from "react-icons/lu";
 
 function FormComponents() {
 
@@ -81,6 +81,11 @@ function FormComponents() {
     }
 
     const loginPreCodesReact=`
+import { useState } from "react";
+import { IoEyeSharp } from "react-icons/io5";
+import { RiUserFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+
 function Login(){
     const [loginUsername,setLoginUsername]=useState('');
     const [loginPassword,setLoginPassword]=useState('');
@@ -473,6 +478,26 @@ function loginValidation(event){
         }
     }
 
+    const [firstPasswordType,setFirstPasswordType]=useState("password");
+    function signupShowPassword(){
+        if(firstPasswordType==="password"){
+           setFirstPasswordType('text');
+        }
+        else{
+            setFirstPasswordType('password');
+        }
+    }
+
+    const [confirmPasswordShow,setConfirmPasswordShow]=useState("password")
+    function signupConfirmShowPassword(){
+        if(confirmPasswordShow==="password"){
+            setConfirmPasswordShow('text');
+        }
+        else{
+            setConfirmPasswordShow('password');
+        }
+    }
+
      
     function SignUpValidation(event) {
         event.preventDefault();
@@ -485,6 +510,11 @@ function loginValidation(event){
 
 
     const signupReactCode=`
+import { useState } from "react";
+import { IoEyeSharp } from "react-icons/io5";
+import { RiUserFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+
 function SignupForm(){
     const [signUpusername,setSignupUsername]=useState('');
     const [signupPassword,setSignupPassword]=useState('');
@@ -571,6 +601,26 @@ function SignupForm(){
                 ...prev,confirmPassword:''}));
         }
     }
+    
+    const [firstPasswordType,setFirstPasswordType]=useState("password");
+    function signupShowPassword(){
+        if(firstPasswordType==="password"){
+           setFirstPasswordType('text');
+        }
+        else{
+            setFirstPasswordType('password');
+        }
+    }
+
+    const [confirmPasswordShow,setConfirmPasswordShow]=useState("password")
+    function signupConfirmShowPassword(){
+        if(confirmPasswordShow==="password"){
+            setConfirmPasswordShow('text');
+        }
+        else{
+            setConfirmPasswordShow('password');
+        }
+    }
 
     function SignUpValidation(event) {
         event.preventDefault();
@@ -607,9 +657,9 @@ function SignupForm(){
                 <div className="inputBox">
                     <label htmlFor="passwords">Password:</label>
                     <div className="formInputs" >
-                        <input type="password" placeholder="Password" 
+                        <input type={firstPasswordType} placeholder="Password" 
                         id="passwords" value={signupPassword} onChange={signupPasswordHandler}/>
-                        <IoEyeSharp />
+                        <IoEyeSharp onClick={signupShowPassword}/>
                     </div>
                     <p className="formInputsnotDone">{signupErrorMessage.password}</p>
                 </div>
@@ -617,9 +667,9 @@ function SignupForm(){
                 <div className="inputBox">
                     <label htmlFor="confirm">Confirm Password:</label>
                     <div className="formInputs" >
-                        <input type="password" placeholder="Confirm password" 
+                        <input type={confirmPasswordShow} placeholder="Confirm password" 
                         id="confirm" value={confirmSignup} onChange={signupConfirmHandle}/>
-                        <IoEyeSharp />
+                        <IoEyeSharp onClick={signupConfirmShowPassword}/>
                     </div>
                     <p className="formInputsnotDone">{signupErrorMessage.confirmPassword}</p>
                 </div>
@@ -933,6 +983,11 @@ const signupjscode=`
 `;
 
 const loginTailwindCodes=`
+import { useState } from "react";
+import { IoEyeSharp } from "react-icons/io5";
+import { RiUserFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+
 function Login(){
     const [loginUsername,setLoginUsername]=useState('');
     const [loginPassword,setLoginPassword]=useState('');
@@ -985,14 +1040,14 @@ function Login(){
 
     return(
         <>
-            <form className="flex flex-col gap-[10px] align-center bg-[#F7F7F7] text-[#0B0729] p-[20px] rounded-[10px] w-[375px]">
+            <form className="flex flex-col gap-[10px] items-center bg-[#F7F7F7] text-[#0B0729] p-[20px] rounded-[10px] w-[375px]">
                 <div className="flex flex-col gap-[4px]">                                
                 <label htmlFor="logusername">Username:</label>
-                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] px-[9px] 
-                    placeholder-[#0B0729] border-none outline-none">
+                    <div className="w-[275px] h-[37px] flex items-center rounded-[5px] text-[#0B0729] 
+                    ">
                         <input type="text" placeholder="username"
                         value={loginUsername}
-                        onChange={loginUsernameHandler} id="logusername"/>
+                        onChange={loginUsernameHandler} id="logusername" classname="placeholder-[#0B0729]  px-[9px] w-[265px] h-[35px] border-none outline-none"/>
                         <RiUserFill />
                     </div>
                     <p className="text-red-600 h-[20px]"
@@ -1001,11 +1056,10 @@ function Login(){
 
                 <div className="flex flex-col gap-[10px] align-center bg-[#F7F7F7] text-[#0B0729] p-[20px] rounded-[10px] w-[375px]">
                     <label htmlFor="logPassword">Password:</label>
-                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] px-[9px] 
-                    placeholder-[#0B0729] border-none outline-none">
+                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] flex items-center">
                         <input type={typeInput} placeholder="password"
                         value={loginPassword}
-                        onChange={loginPasswordHandler} id="logPassword"/>
+                        onChange={loginPasswordHandler} id="logPassword" classname="placeholder-[#0B0729] px-[9px] w-[265px] h-[35px] border-none outline-none"/>
                         <IoEyeSharp onClick={loginShowPassword}/>
                     </div>
                     <p className="text-red-600 h-[20px]">{loginErrorPassword}</p>
@@ -1024,6 +1078,11 @@ export default Login;
 
 `;
 const signupTailwindCodes=`
+import { useState } from "react";
+import { IoEyeSharp } from "react-icons/io5";
+import { RiUserFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+
 function SignupForm(){
     const [signUpusername,setSignupUsername]=useState('');
     const [signupPassword,setSignupPassword]=useState('');
@@ -1111,6 +1170,26 @@ function SignupForm(){
         }
     }
 
+    const [firstPasswordType,setFirstPasswordType]=useState("password");
+    function signupShowPassword(){
+        if(firstPasswordType==="password"){
+           setFirstPasswordType('text');
+        }
+        else{
+            setFirstPasswordType('password');
+        }
+    }
+
+    const [confirmPasswordShow,setConfirmPasswordShow]=useState("password")
+    function signupConfirmShowPassword(){
+        if(confirmPasswordShow==="password"){
+            setConfirmPasswordShow('text');
+        }
+        else{
+            setConfirmPasswordShow('password');
+        }
+    }
+
     function SignUpValidation(event) {
         event.preventDefault();
      
@@ -1125,10 +1204,9 @@ function SignupForm(){
             <form className="flex flex-col gap-[10px] align-center bg-[#F7F7F7] text-[#0B0729] p-[20px] rounded-[10px] w-[375px]">
                 <div className="flex flex-col gap-[4px]">
                     <label htmlFor="name">Username:</label>
-                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] px-[9px] 
-                    placeholder-[#0B0729] border-none outline-none">
+                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] flex items-center">
                         <input type="text" placeholder="Username"  
-                        id="name" value={signUpusername} onChange={signupUsernameHandler}/>
+                        id="name" value={signUpusername} onChange={signupUsernameHandler} classname="placeholder-[#0B0729] px-[9px] w-[265px] h-[35px] border-none outline-none"/>
                         <RiUserFill />
                     </div>
                     <p className="text-red-600 h-[20px]">{signupErrorMessage.username}</p>
@@ -1136,10 +1214,9 @@ function SignupForm(){
 
                 <div className="flex flex-col gap-[4px]">
                     <label htmlFor="email">Email:</label>
-                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] px-[9px] 
-                    placeholder-[#0B0729] border-none outline-none">
+                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] flex items-center">
                         <input type="email" placeholder="Email"  
-                        id="email" value={signupEmail} onChange={signupEmailHandler}/>
+                        id="email" value={signupEmail} onChange={signupEmailHandler} classname="placeholder-[#0B0729] px-[9px] w-[265px] h-[35px] border-none outline-none"/>
                         <MdEmail />
                     </div>
                     <p className="text-red-600 h-[20px]">{signupErrorMessage.email}</p>
@@ -1147,29 +1224,27 @@ function SignupForm(){
                             
                 <div className="flex flex-col gap-[4px]">
                     <label htmlFor="passwords">Password:</label>
-                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] px-[9px] 
-                    placeholder-[#0B0729] border-none outline-none" >
-                        <input type="password" placeholder="Password" 
-                        id="passwords" value={signupPassword} onChange={signupPasswordHandler}/>
-                        <IoEyeSharp />
+                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] flex items-center" >
+                        <input type={firstPasswordType} placeholder="Password" 
+                        id="passwords" value={signupPassword} onChange={signupPasswordHandler} classname="placeholder-[#0B0729] px-[9px] w-[265px] h-[35px] border-none outline-none"/>
+                        <IoEyeSharp onClick={signupShowPassword}/>
                     </div>
                     <p className="text-red-600 h-[20px]">{signupErrorMessage.password}</p>
                 </div>
 
                 <div className="flex flex-col gap-[4px]">
                     <label htmlFor="confirm">Confirm Password:</label>
-                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] px-[9px] 
-                    placeholder-[#0B0729] border-none outline-none" >
-                        <input type="password" placeholder="Confirm password" 
-                        id="confirm" value={confirmSignup} onChange={signupConfirmHandle}/>
-                        <IoEyeSharp />
+                    <div className="w-[275px] h-[35px] rounded-[5px] text-[#0B0729] flex items-center" >
+                        <input type={confirmPasswordShow} placeholder="Confirm password" 
+                        id="confirm" value={confirmSignup} onChange={signupConfirmHandle} classname="placeholder-[#0B0729] px-[9px] w-[265px] h-[35px] border-none outline-none"/>
+                        <IoEyeSharp onClick={signupConfirmShowPassword}/>
                     </div>
                     <p className="text-red-600 h-[20px]">{signupErrorMessage.confirmPassword}</p>
                 </div>
 
                 <div className="flex justify-start align-center mr-[50px]">
                     <input type="checkbox" name="termsCondition" className="cursor-pointer accent-[#0B0729]" required/>
-                    <label htmlFor="termsCondition">
+                    <label htmlFor="termsCondition" className="text-md">
                         I agree to the Terms & Privacy Policy
                     </label>
                 </div>
@@ -1184,6 +1259,7 @@ function SignupForm(){
         </>
     );
 }
+
 export default SignupForm;
 
 `;
@@ -1352,9 +1428,9 @@ export default SignupForm;
                             <div className="inputBox">
                                 <label htmlFor="passwords">Password:</label>
                                 <div className="formInputs" >
-                                    <input type="password" placeholder="Password" 
+                                    <input type={firstPasswordType} placeholder="Password" 
                                     id="passwords" value={signupPassword} onChange={signupPasswordHandler}/>
-                                    <IoEyeSharp />
+                                    <IoEyeSharp onClick={signupShowPassword}/>
                                 </div>
 
                                 <p className="formInputsnotDone">{signupErrorMessage.password}</p>
@@ -1363,9 +1439,9 @@ export default SignupForm;
                             <div className="inputBox">
                                 <label htmlFor="confirm">Confirm Password:</label>
                                 <div className="formInputs" >
-                                    <input type="password" placeholder="Confirm password" 
+                                    <input type={confirmPasswordShow} placeholder="Confirm password" 
                                     id="confirm" value={confirmSignup} onChange={signupConfirmHandle}/>
-                                     <IoEyeSharp />
+                                     <IoEyeSharp onClick={signupConfirmShowPassword}/>
                                 </div>
                                 <p className="formInputsnotDone">{signupErrorMessage.confirmPassword}</p>
                             </div>
