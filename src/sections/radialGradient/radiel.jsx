@@ -48,7 +48,7 @@ function RadielGradient() {
 
     const convertedTailwindCode=bgRadialGradient.replaceAll(" ","_");
     const radialTailwindCode=`
- <div className="w-[100px] h-[75px] bg-[radial-gradient(${convertedTailwindCode})]"></div>`
+ <div className="w-[100px] h-[75px] bg-[${convertedTailwindCode}]"></div>`
 
     const [radialCopied,setRadialCopied]=useState({
         radialCss:true,
